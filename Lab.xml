@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Lab xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/ContentFramework.Core.Models">
+  <Id>IntroductionToWindowsAzureMediaServices</Id>
+  <Technologies>
+    <Technology>Windows Azure Media Services</Technology>
+  </Technologies>
+  <Author>
+    <Blog></Blog>
+    <Email></Email>
+    <Name></Name>
+  </Author>
+  <Description>
+	XXXXXXXXXXXXXXXXXXXXXXXXXXX.
+  </Description>
+  <Document ConversionType="Html">.\HOL.md</Document>
+  <Title>Introduction to Windows Azure Media Services</Title>
+  <Version>1.0.3</Version>
+  <Source>.\Source</Source>
+  <DependencyChecker>.\Source\Setup\Dependencies.depi</DependencyChecker>
+  <CustomProperties>
+    <Property Name="ContentType" Value="VS2012" />
+    <Property Name="GitHubRepository" Value="https://github.com/WindowsAzure-TrainingKit/HOL-IntroToWindowsAzureMediaServices/>
+  </CustomProperties>
+</Lab>
