@@ -1,1 +1,1 @@
-﻿Before executing the end solution provided for Exercise 3, make sure you updated the {YOUR-MEDIA-SERVICE-ENCODED-VIDEO-URL} placeholder with the URL of the encoded video that you uploaded in Exercise 1.
+﻿Before executing the end solution provided for Exercise 3, make sure you updated the _{YOUR-MEDIA-SERVICE-ENCODED-VIDEO-URL}_ placeholder in the **SampleMediaPlayer/MainPage.xaml.cs** file with the URL of the encoded video that you uploaded in Exercise 1.
