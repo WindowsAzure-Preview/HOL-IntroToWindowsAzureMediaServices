@@ -141,21 +141,51 @@ If the file size value does not get updated after the uploading process stops, p
 <a name="Exercise2" />
 ## Exercise 2: A Console app using the Media Services SDK that uploads, encodes, and streams a video programmatically ##
 
-<INTRO>
+In this exercise, you will create a new console application that allows you to perform the different tasks on your Azure Media Services subscription.
 
-<a name="programatically-uploading-a-mp4-video" />
+<a name="programmatically-uploading-a-mp4-video" />
 ### Task 1 - Programmatically Uploading a Mp4 video ###
 
-1. First step.
+1. Open **Microsoft Visual Studio 2012 Express for Web** (or higher) in elevated administrator mode. If the **User Account Control** dialog appears, click **Yes**.
 
+1. In the **File** menu, choose **New** and then **Project/Solution**. In the New Project dialog, select the **Templates | C#** node from the left pane, and then select the **Console Application** template.
 
-<a name="programatically-encoding-a-mp4-video" />
+1. Enter _MyMediaServicesManager_ as the project **Name**, choose a desired **Location**, and click **Ok**.
+
+1. Open the **Package Manager Console** by clicking **View | Other Windows | Package Manager Console**.
+
+1. In the console, type _Install-Package windowsazure.mediaservices_ to download and install the **Windows Azure Media Services** NuGet package and its dependencies.
+
+1. In the _program.cs_ file add the following using statements.
+
+	````C#
+	using Microsoft.WindowsAzure.MediaServices.Client;
+	using System.IO;
+	````
+
+1. Go to the **Windows Azure Management Portal**, click **Media Services** in the left menu, and then click your **Media Services** name. The quickstart page will be displayed.
+
+1. Under the **WRITE SOME CODE** section, click **UPLOAD A VIDEO PROGRAMMATICALLY**.
+
+	![Programmatically uploading a video](Images/programatically-uploading-a-video.png?raw=true).
+
+1. Copy this code an paste it in the _program.cs_ file, inside the **Main** method.
+
+1. Update the code you just pasted to point to a video that you want to upload, by replacing the _YOUR FILE PATH_ string. It could be the same video used in the previous exercise.
+
+1. Press **F5** to run the solution and wait until the console app closes.
+
+1. Go to the portal, and notice that video is being uploaded.
+
+	![The programmatically uploaded video](Images/the-programmatically-uploaded-video.png?raw=true).
+
+<a name="programmatically-encoding-a-mp4-video" />
 ### Task 2 - Programmatically Encoding a Mp4 video using Smooth Streaming ###
 
 1. First step.
 
 
-<a name="programatically-delivering-and-streaming-a-mp4-video" />
+<a name="programmatically-delivering-and-streaming-a-mp4-video" />
 ### Task 3 - Programmatically Delivering and Streaming a Mp4 video ###
 
 1. First step.
