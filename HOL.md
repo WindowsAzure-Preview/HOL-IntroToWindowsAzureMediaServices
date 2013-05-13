@@ -32,6 +32,8 @@ This hands-on lab includes the following exercises:
 1. [Microsoft Media Platform Player Framework for the client](#Exercise3)
 1. [Monetization](#Exercise4)
 
+---
+
 <a name="Exercise1" />
 ## Exercise 1: Uploading a Job from the Portal for HTML5 playback ##
 
@@ -138,6 +140,8 @@ If the file size value does not get updated after the uploading process stops, p
 
 ---
 
+---
+
 <a name="Exercise2" />
 ## Exercise 2: A Console app using the Media Services SDK that uploads, encodes, and streams a video programmatically ##
 
@@ -190,20 +194,93 @@ In this exercise, you will create a new console application that allows you to p
 
 1. First step.
 
+---
+
 <a name="Exercise3" />
 ## Exercise 3: Microsoft Media Platform Player Framework for the client  ##
 
-<INTRO>
+Microsoft Media Platform is a complete set of technologies for digital media encoding, delivery, and playback for virtually any network-connected device. The Player Framework is an open source video player available for Silverlight, HTML5, and Xbox, as well as Windows 8 apps and Windows Phone apps. It allows you to play both progressive download videos and Smooth Streaming videos. In this exercise you will first download and install the Microsoft Media Platform Player Framework and then build a simple Store app that will consume a video previously uploaded to Windows Azure Media Services and play it in a video player control.
 
 <a name="installing-MMPPF" />
 ### Task 1 - Installing Microsoft Media Platform Player Framework ###
 
-1. First step.
+In this task you will download and install the latest version of the Microsoft Media Platform Player Framework.
+
+1. Browse to <http://playerframework.codeplex.com/releases> and download the latest version of the Player Framework.
+
+1. Once the download completes, open **Microsoft.PlayerFramework.vsix**.
+
+1. In the **VSIX Installer** window, read the Microsoft Public License and click **Install**.
+
+	![Microsoft Media Platform Player Framework Installation](Images/mmpf-installation.png?raw=true "Microsoft Media Platform Player Framework Installation")
+
+    _Microsoft Media Platform Player Framework Installation_
+
+1. Once the installation finishes, click **Close**.
+
+	![Microsoft Media Platform Player Framework Installation Complete](Images/mmpf-installation-complete.png?raw=true "Microsoft Media Platform Player Framework Installation Complete")
+
+    _Microsoft Media Platform Player Framework Installation Complete_
 
 <a name="adding-a-video-player-control-to-a-windows8-app" />
 ### Task 2 - Adding a video player control to a Windows 8 app ###
 
-1. First step.
+In this task you will create a new C# Store app from scratch and add video control linked to a video uploaded to Windows Azure Media Services.
+
+1. Open **Visual Studio Express 2012 for Windows 8** and select **New Project...** from the Start Page to start a new solution.
+
+	![Creating a New Project](Images/creating-new-project.png?raw=true "Creating a New Project")
+
+    _Creating a New Project_
+
+1. In the **New Project** dialog, select **Blank App (XAML)** under the **Visual C# | Windows Store** tab. Name it _SampleMediaPlayer_, choose a location and click **OK**.
+
+	![New C# Store App](Images/new-store-blank-app.png?raw=true "New C# Store App")
+
+    _New C# Store App_
+
+	
+	![New Store App Solution Explorer](Images/new-store-app-solution-explorer.png?raw=true "New Store App Solution Explorer")
+
+    _New Store App Solution Explorer_
+
+1. Open **MainPage.xaml** to open the markup code for the main page of the app.
+
+1. Open the toolbox at the left corner of the screen and extend the **Common XAML Controls** section. Drag and drop the **MediaPlayer** control into the designer. Notice the markup code generated in the xaml file for this control.
+
+	> **Note:** You may adjust the height and width of the control to values of your choice.
+
+	![Media Player control](Images/media-player-control.png?raw=true "Media Player control")
+
+    _Media Player control_
+
+	![Generated Code for Media Player Control](Images/generated-code-for-media-player-control.png?raw=true "Generated Code for Media Player Control")
+
+    _Generated Code for Media Player Control_
+
+1. In the MediaPlayer element of the **MainPage.xaml** file, add the **x:Name** property with the value _videoPlayer_.
+
+	````XML
+	<PlayerFramework:MediaPlayer x:Name="videoPlayer"  HorizontalAlignment="Left" Height="600" Margin="200,96,0,0" VerticalAlignment="Top" Width="1000"/>
+	````
+
+1. Open the **MainPage.xaml.cs** file and add the following code in the **OnNavigatedTo** event. Make sure you replace the _YOUR-MEDIA-SERVICE-VIDEO-URL_ placeholder with the URL of the encoded video that you uploaded in Exercise 1.
+
+	<!-- mark:3 -->
+	````C#
+	protected override void OnNavigatedTo(NavigationEventArgs e)
+	{
+		this.videoPlayer.Source = new Uri(@"{YOUR-MEDIA-SERVICE-ENCODED-VIDEO-URL}");
+	}
+	````
+
+1. Press **F5** to start the app. You should see the video automatically playing in the video player that you inserted before.
+
+	![Store app running](Images/store-app-running.png?raw=true "Store app running")
+
+    _Store app running_
+
+---
 
 <a name="Exercise4" />
 ## Exercise 4: Monetization ##
