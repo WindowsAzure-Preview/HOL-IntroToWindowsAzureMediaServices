@@ -140,8 +140,6 @@ If the file size value does not get updated after the uploading process stops, p
 
 ---
 
----
-
 <a name="Exercise2" />
 ## Exercise 2: A Console app using the Media Services SDK that uploads, encodes, and streams a video programmatically ##
 
@@ -167,32 +165,165 @@ In this exercise, you will create a new console application that allows you to p
 	using System.IO;
 	````
 
+1. Paste the following code in the _program.cs_ file, inside the **Main** method. This code prompts the user about the different steps that the final app will perform, and will aid you in completing the exercise.
+
+	````C#
+	Console.WriteLine("Uploading Video");
+            
+	Console.WriteLine("Uploading Completed");
+	Console.WriteLine("Encoding Video");
+
+	Console.WriteLine("Encoding Completed");
+	Console.WriteLine("Publishing Video");
+
+	Console.WriteLine("Publishing Completed");
+	Console.ReadLine();
+	````
+
 1. Go to the **Windows Azure Management Portal**, click **Media Services** in the left menu, and then click your **Media Services** name. The quickstart page will be displayed.
 
 1. Under the **WRITE SOME CODE** section, click **UPLOAD A VIDEO PROGRAMMATICALLY**.
 
 	![Programmatically uploading a video](Images/programatically-uploading-a-video.png?raw=true).
 
-1. Copy this code an paste it in the _program.cs_ file, inside the **Main** method.
+1. Copy this code an paste it in inside the **Main** method, between the lines that notify about the uploading process. The resulting code will be similar to the following one.
 
-1. Update the code you just pasted to point to a video that you want to upload, by replacing the _YOUR FILE PATH_ string. It could be the same video used in the previous exercise.
+	<!-- mark:5-9 -->
+	````C#
+    static void Main(string[] args)
+    {
+		Console.WriteLine("Uploading Video");
 
-1. Press **F5** to run the solution and wait until the console app closes.
+		var uploadFilePath = @"[YOUR FILE PATH]";
+		var context = new CloudMediaContext("[YOUR-MEDIA-SERVICE-ACCOUNT-NAME]", "[YOUR-MEDIA-SERVICE-ACCOUNT-KEY]");
+		var uploadAsset = context.Assets.Create(Path.GetFileNameWithoutExtension(uploadFilePath), AssetCreationOptions.None);
+		var assetFile = uploadAsset.AssetFiles.Create(Path.GetFileName(uploadFilePath));
+		assetFile.Upload(uploadFilePath);
 
-1. Go to the portal, and notice that video is being uploaded.
+		Console.WriteLine("Uploading Completed");
+		Console.WriteLine("Encoding Video");
 
-	![The programmatically uploaded video](Images/the-programmatically-uploaded-video.png?raw=true).
+		Console.WriteLine("Encoding Completed");
+		Console.WriteLine("Publishing Video");
+
+		Console.WriteLine("Publishing Completed");
+		Console.ReadLine();
+		}
+	}
+	````
+	The preceding code uses the **CloudMediaContext** class to create an _asset file_ using the provided file path. Once the asset file is created, the **Upload** method is called to start the uploading operation.
+
+1. Update the code you just pasted to point to the video that you want to upload, by replacing the _YOUR FILE PATH_ string. It could be the same video used in the previous exercise. If you are going to do that it is recommended that you rename the video to differentiate it from the one uploaded in the first exercise of this lab.
 
 <a name="programmatically-encoding-a-mp4-video" />
 ### Task 2 - Programmatically Encoding a Mp4 video using Smooth Streaming ###
 
-1. First step.
+1. Add the following using statement at the top of the _program.cs_ file.
 
+	````C#
+	using System.Threading;
+	````
+
+1. Add the following code inside the WriteLine blocks that notify about the initiation and termination of the encoding operation.
+
+	<!-- mark:3-26 -->
+	````C#
+    Console.WriteLine("Encoding Video");
+
+    var encodeAssetId = uploadAsset.Id; // "YOUR ASSET ID";
+    var encodingPreset = "H264 Smooth Streaming 720p";
+    var assetToEncode = context.Assets.Where(a => a.Id == encodeAssetId).FirstOrDefault();
+    if (assetToEncode == null)
+    {
+        throw new ArgumentException("Could not find assetId: " + encodeAssetId);
+    }
+
+    IJob job = context.Jobs.Create("Encoding " + assetToEncode.Name + " to " + encodingPreset);
+
+    IMediaProcessor latestWameMediaProcessor = (from p in context.MediaProcessors
+                                                where p.Name == "Windows Azure Media Encoder"
+                                                select p).ToList()
+                                                .OrderBy(wame => new Version(wame.Version)).LastOrDefault();
+    ITask encodeTask = job.Tasks.AddNew("Encoding", latestWameMediaProcessor, encodingPreset, TaskOptions.None);
+    encodeTask.InputAssets.Add(assetToEncode);
+    encodeTask.OutputAssets.AddNew(assetToEncode.Name + " as " + encodingPreset, AssetCreationOptions.None);
+
+    job.StateChanged += new EventHandler<JobStateChangedEventArgs>((sender, jsc) =>
+        Console.WriteLine(string.Format("{0}\n State: {1}\n Time: {2}\n\n", ((IJob)sender).Name, jsc.CurrentState, DateTime.UtcNow.ToString(@"yyyy_M_d_hhmmss"))));
+    job.Submit();
+    job.GetExecutionProgressTask(CancellationToken.None).Wait();
+
+    var preparedAsset = job.OutputMediaAssets.FirstOrDefault();
+
+
+    Console.WriteLine("Encoding Completed"); 
+	````
+
+	The preceding code uses the **CloudMediaContext** instance to create an encoding job with an enconding task to the specified preset. In this case a smooth streaming encoding (H264 Smooth Streaming 720p) is used.
+	Then the job is submited. Notice that an event handler is attached to the **StateChanged** event of the job, what means that every time the stats of the job changes that will be prompted to the console.
 
 <a name="programmatically-delivering-and-streaming-a-mp4-video" />
 ### Task 3 - Programmatically Delivering and Streaming a Mp4 video ###
 
-1. First step.
+1. Add the following code inside the WriteLine blocks that notify about the initiation and termination of the publishing operation.
+
+	<!-- mark:3-32 -->
+	````C#
+    Console.WriteLine("Publishing Video");
+
+    var streamingAssetId = preparedAsset.Id; // "YOUR ASSET ID";
+    var daysForWhichStreamingUrlIsActive = 365;
+    var streamingAsset = context.Assets.Where(a => a.Id == streamingAssetId).FirstOrDefault();
+    var accessPolicy = context.AccessPolicies.Create(streamingAsset.Name, TimeSpan.FromDays(daysForWhichStreamingUrlIsActive),
+                                                AccessPermissions.Read | AccessPermissions.List);
+    string streamingUrl = string.Empty;
+    var assetFiles = streamingAsset.AssetFiles.ToList();
+    var streamingAssetFile = assetFiles.Where(f => f.Name.ToLower().EndsWith("m3u8-aapl.ism")).FirstOrDefault();
+    if (streamingAssetFile != null)
+    {
+        var locator = context.Locators.CreateLocator(LocatorType.OnDemandOrigin, streamingAsset, accessPolicy);
+        Uri hlsUri = new Uri(locator.Path + streamingAssetFile.Name + "/manifest(format=m3u8-aapl)");
+        streamingUrl = hlsUri.ToString();
+    }
+    streamingAssetFile = assetFiles.Where(f => f.Name.ToLower().EndsWith(".ism")).FirstOrDefault();
+    if (string.IsNullOrEmpty(streamingUrl) && streamingAssetFile != null)
+    {
+        var locator = context.Locators.CreateLocator(LocatorType.OnDemandOrigin, streamingAsset, accessPolicy);
+        Uri smoothUri = new Uri(locator.Path + streamingAssetFile.Name + "/manifest");
+        streamingUrl = smoothUri.ToString();
+    }
+    streamingAssetFile = assetFiles.Where(f => f.Name.ToLower().EndsWith(".mp4")).FirstOrDefault();
+    if (string.IsNullOrEmpty(streamingUrl) && streamingAssetFile != null)
+    {
+        var locator = context.Locators.CreateLocator(LocatorType.Sas, streamingAsset, accessPolicy);
+        var mp4Uri = new UriBuilder(locator.Path);
+        mp4Uri.Path += "/" + streamingAssetFile.Name;
+        streamingUrl = mp4Uri.ToString();
+    }
+    Console.WriteLine("Streaming Url: " + streamingUrl);
+
+    Console.WriteLine("Publishing Completed");
+    Console.ReadLine();
+	````
+
+	The preceding code locates the asset and creates a locator URI that will be used to access the asset publicly.
+
+1. Press **F5** to run the console application, and wait until the uploading, encoding and publishing finishes.
+
+	![The console application running](Images/the-console-app-running.png?raw=true "The console application running")
+
+1. Press any key to close the console application when it shows that the publishing is completed.
+
+1. Go to the portal, and to the **Content** section of your Media Services subscription.
+
+	![The portal showing the assets processed by the console app](Images/portal-showing-the-assets-processed-by-the-console-app.png?raw=true "The portal showing the assets processed by the console app")
+
+1. Select the asset that was encoded in smooth streaming and press the play button.
+
+
+	![The smooth streaming video being played](Images/smooth-streaming-video-being-played.png?raw=true "The smooth streaming video being played")
+
+	>**Note:** You may notice that this video plays faster that the one uploaded in exercise one. This is due to smooth streaming, as it encodes the video in several qualities and will send you the better video according to your bandwith.
 
 ---
 
