@@ -442,7 +442,48 @@ In this task you will create a new C# Store app from scratch and add video contr
 <a name="adding-advertisements-using-a-vmap-file-to-a-windows8-video-app" />
 ### Task 1 - Adding advertisements using a VMAP file to a Windows 8 video app ###
 
-1. First step.  
+<INTRO TASK>
+
+1. Start **Visual Studio Express 2012 for Windows 8** and open the **Begin** solution located at **Source\Ex4-Advertising\Begin**.
+
+1. Add a reference to the _Microsoft Player Framework Advertising Plugin_. To do this, right-click the **References** folder and select **Add Reference**. Under **Windows | Extensions**, check **Microsoft Player Framework Advertising Plugin** and click **OK**.
+
+	![Adding reference to the Advertising Plugin](Images/adding-reference-to-advertising-plugin.png?raw=true "Adding reference to the Advertising Plugin")
+
+    _Adding reference to the Advertising Plugin_
+
+1. Open **MainPage.xaml** and add the following namespace for the Microsoft Player Framework Advertising Plugin.
+
+	````XML
+	xmlns:ads="using:Microsoft.PlayerFramework.Advertising"
+	````
+
+1. Now you will add a new **VmapSchedulerPlugin** to the MediaPlayer that you added in the previous exercise pointing to a _vmap.xml_ file already uploaded in a blob storage. To do this, replace the _PlayerFramework:MediaPlayer_ element with the following code.
+
+	````XML
+	<PlayerFramework:MediaPlayer x:Name="videoPlayer" HorizontalAlignment="Left" Height="600" Margin="200,96,0,0" VerticalAlignment="Top" Width="1000" >
+		<PlayerFramework:MediaPlayer.Plugins>
+			 <ads:VmapSchedulerPlugin Source="http://smf.blob.core.windows.net/samples/win8/ads/vmap.xml"/>
+			 <ads:AdHandlerPlugin />
+		</PlayerFramework:MediaPlayer.Plugins>
+	</PlayerFramework:MediaPlayer>
+	````
+
+1. Open the **MainPage.xaml.cs** file and replace the _YOUR-MEDIA-SERVICE-VIDEO-URL_ placeholder in the **OnNavigatedTo** event with the URL of the encoded video that you uploaded in Exercise 2.
+
+	<!-- mark:3 -->
+	````C#
+	protected override void OnNavigatedTo(NavigationEventArgs e)
+	{
+		this.videoPlayer.Source = new Uri(@"{YOUR-MEDIA-SERVICE-ENCODED-VIDEO-URL}");
+	}
+	````
+
+1. Press **F5** to start the app. Notice that the advertise is displayed at the beginning of the video.
+
+	![Running app with Advertising](Images/advertising-in-running-app.png?raw=true "Running app with Advertising")
+
+    _Running app with Advertising_
 
 <a name="Summary"></a>
 ## Summary ##
