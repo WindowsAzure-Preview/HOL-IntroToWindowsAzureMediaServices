@@ -4,7 +4,9 @@
 ---
 <a name="Overview" />
 ## Overview ##
-Windows Azure Media Services allows you to build a media distribution solution that can stream audio and video to Windows, iOS, Android, and other devices and platforms.
+Windows Azure Media Services allows you to build a media distribution solution that can stream audio and video to Windows, iOS, Android, and other devices and platforms. It offer the flexibility, scalability and reliability of a cloud platform to handle high quality media experiences for a global audience. Media Services includes cloud-based versions of many existing technologies from the Microsoft Media Platform and our media partners, including ingest, encoding, format conversion, content protection and both on-demand and live streaming capabilities. Whether enhancing existing solutions or creating new workflows, you can easily combine and manage Media Services to create custom workflows that fit every need.
+
+![Media Services Overview](Images/media-services-overview.png?raw=true "Media Services Overview")
 
 In this HOL you will learn how you can use Visual Studio 2012 and Windows Azure Media Services to upload, encode,  deliver and stream media content. Additionally, you will learn how to add a media player to your Windows Store applications and how to monetize your application using advertisements in the player.
 
@@ -48,7 +50,9 @@ This task explains how to use the Quick Create method to create a new Media Serv
 
 1. Click **New** | **App Services** | **Media Services**, and then click **Quick Create**.
 
-	![Creating a new Media Service](Images/creating-a-media-service.png?raw=true)
+	![Creating a new Media Service](Images/creating-a-media-service.png?raw=true "Creating a new Media Service")
+
+	_Creating a new Media Service_
 
 1. In **NAME**, enter the name of the new account. A Media Services account name is all lower-case numbers or letters with no spaces, and is 3 - 24 characters in length.
 
@@ -60,10 +64,12 @@ This task explains how to use the Quick Create method to create a new Media Serv
 
 1. Click **Quick Create** at the bottom of the form.
 
-You can monitor the status of the process in the message area at the bottom of the window.
+	You can monitor the status of the process in the message area at the bottom of the window.
 The **media services** page opens with the new account displayed. When the status changes to Active, it means the account is successfully created.
 
-![The recently created Media Service](Images/recently-created-media-service.png?raw=true)
+	![The recently created Media Service](Images/recently-created-media-service.png?raw=true "The recently created Media Service")
+
+	_The recently created Media Service_
 
 <a name="managing-content-in-media-services" />
 ### Task 2 - Managing Content in Media Services ###
@@ -86,7 +92,9 @@ On this task yu will upload, encode and publish media content from the portal.
 
 1. Click the **Content** view at the top of the page. Your view should look similar to the following screen shot.
 
-	![Uploading Content](Images/uploading-content.png?raw=true)
+	![Uploading Content](Images/uploading-content.png?raw=true "Uploading Content")
+
+	_Uploading Content_
  
 1. Click the **Upload** button at the bottom of the portal. 
 
@@ -96,15 +104,19 @@ On this task yu will upload, encode and publish media content from the portal.
  
 1. In the Upload Content dialog, click the check button to accept the File and Content Name.
 
-	![Upload Content dialog](Images/upload-content-dialog.png?raw=true)
+	![Upload Content dialog](Images/upload-content-dialog.png?raw=true "Upload Content dialog")
+
+	_Upload Content dialog_
 
 1. The upload will start and you can track progress from the bottom of the portal. 
  
-	![Uploading progress](Images/uploading-progress.png?raw=true)
+	![Uploading progress](Images/uploading-progress.png?raw=true "Uploading progress")
 
-Once the upload has completed, you will see the new asset listed in the Content list. By convention the name will have "**-Source**" appended at the end to help track new content as source content for encoding tasks.
+	_Uploading progress_
 
-If the file size value does not get updated after the uploading process stops, press the Sync Metadata button. This synchronizes the asset file size with the actual file size in storage and refreshes the value on the Content page. 
+	Once the upload has completed, you will see the new asset listed in the Content list. By convention the name will have "**-Source**" appended at the end to help track new content as source content for encoding tasks.
+
+	If the file size value does not get updated after the uploading process stops, press the Sync Metadata button. This synchronizes the asset file size with the actual file size in storage and refreshes the value on the Content page. 
 
 **Encoding content**
 
@@ -124,7 +136,9 @@ If the file size value does not get updated after the uploading process stops, p
 	
 	The [Task Preset Strings for Windows Azure Media Encoder](http://go.microsoft.com/fwlink/?linkid=270865&clcid=0x409) topic explains what each preset in the Advanced Presets list means. 
 
-	![Encoding Media](Images/encoding-media.png?raw=true)
+	![Encoding Media](Images/encoding-media.png?raw=true "Encoding Media")
+
+	_Encoding Media_
 
 	Currently, the portal does not support all the encoding formats that are supported by the Media Encoder. It also does not support media asset encryption\decryption. You can perform these tasks programmatically, for more information see [Building Applications with the Media Services SDK for .NET] (http://go.microsoft.com/fwlink/?linkid=270866&clcid=0x409) and [Task Preset Strings for Windows Azure Media Encoder]( http://go.microsoft.com/fwlink/?linkid=270865&clcid=0x409).
 
@@ -184,7 +198,9 @@ In this exercise, you will create a new console application that allows you to p
 
 1. Under the **WRITE SOME CODE** section, click **UPLOAD A VIDEO PROGRAMMATICALLY**.
 
-	![Programmatically uploading a video](Images/programatically-uploading-a-video.png?raw=true).
+	![Programmatically uploading a video](Images/programatically-uploading-a-video.png?raw=true "Programmatically uploading a video")
+
+	_Programmatically uploading a video_
 
 1. Copy this code an paste it in inside the **Main** method, between the lines that notify about the uploading process. The resulting code will be similar to the following one.
 
@@ -312,16 +328,21 @@ In this exercise, you will create a new console application that allows you to p
 
 	![The console application running](Images/the-console-app-running.png?raw=true "The console application running")
 
+	_The console application running_
+
 1. Press any key to close the console application when it shows that the publishing is completed.
 
 1. Go to the portal, and to the **Content** section of your Media Services subscription.
 
 	![The portal showing the assets processed by the console app](Images/portal-showing-the-assets-processed-by-the-console-app.png?raw=true "The portal showing the assets processed by the console app")
 
+	_The portal showing the assets processed by the console app_
+
 1. Select the asset that was encoded in smooth streaming and press the play button.
 
-
 	![The smooth streaming video being played](Images/smooth-streaming-video-being-played.png?raw=true "The smooth streaming video being played")
+
+	_The smooth streaming video being played_
 
 	>**Note:** You may notice that this video plays faster that the one uploaded in exercise one. This is due to smooth streaming, as it encodes the video in several qualities and will send you the better video according to your bandwith.
 
