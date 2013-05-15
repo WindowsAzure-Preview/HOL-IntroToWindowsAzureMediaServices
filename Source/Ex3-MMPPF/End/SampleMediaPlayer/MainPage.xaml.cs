@@ -33,7 +33,6 @@ namespace SampleMediaPlayer
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.videoPlayer.Source = new Uri(@"{YOUR-MEDIA-SERVICE-ENCODED-VIDEO-URL}");
         }
     }
 }

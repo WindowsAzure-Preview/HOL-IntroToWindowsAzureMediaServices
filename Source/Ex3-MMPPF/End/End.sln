@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows 8
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMediaPlayer", "SampleMediaPlayer\SampleMediaPlayer.csproj", "{FF81FB8F-D98C-4ABA-B3E9-AD4D2DC72DED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BAACB7E4-58D5-4E78-BD6E-0D803A46A63A}"
@@ -22,9 +22,9 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FF81FB8F-D98C-4ABA-B3E9-AD4D2DC72DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF81FB8F-D98C-4ABA-B3E9-AD4D2DC72DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF81FB8F-D98C-4ABA-B3E9-AD4D2DC72DED}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FF81FB8F-D98C-4ABA-B3E9-AD4D2DC72DED}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{FF81FB8F-D98C-4ABA-B3E9-AD4D2DC72DED}.Debug|Any CPU.Build.0 = Debug|x64
+		{FF81FB8F-D98C-4ABA-B3E9-AD4D2DC72DED}.Debug|Any CPU.Deploy.0 = Debug|x64
 		{FF81FB8F-D98C-4ABA-B3E9-AD4D2DC72DED}.Debug|ARM.ActiveCfg = Debug|ARM
 		{FF81FB8F-D98C-4ABA-B3E9-AD4D2DC72DED}.Debug|ARM.Build.0 = Debug|ARM
 		{FF81FB8F-D98C-4ABA-B3E9-AD4D2DC72DED}.Debug|ARM.Deploy.0 = Debug|ARM

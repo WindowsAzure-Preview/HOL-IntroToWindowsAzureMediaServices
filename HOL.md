@@ -377,7 +377,9 @@ In this task you will download and install the latest version of the Microsoft M
 <a name="adding-a-video-player-control-to-a-windows8-app" />
 ### Task 2 - Adding a video player control to a Windows 8 app ###
 
-In this task you will create a new C# Store app from scratch and add video control linked to a video uploaded to Windows Azure Media Services.
+In this task you will create a new C# Store app from scratch and add video control linked to a smooth streaming video uploaded to Windows Azure Media Services.
+
+1. Download and install the [Visual Studio Extension SDK for the Smooth Streaming Client] (http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6).
 
 1. Open **Visual Studio Express 2012 for Windows 8** and select **New Project...** from the Start Page to start a new solution.
 
@@ -396,7 +398,19 @@ In this task you will create a new C# Store app from scratch and add video contr
 
     _New Store App Solution Explorer_
 
+1. Add **Microsoft Player Framework Adaptive Streaming Plugin**, **Microsoft Smooth Streaming Client SDK for Windows 8**, and **Microsoft Visual C++ Runtime Package** to your project References. To do this, right-click the project, click **Add References**. In the **Reference Manager**, select the aforementioned references that are located under **Windows | Extensions** and click **Ok**.
+
+	![Smooth Streaming references](Images/smooth-streaming-references.png?raw=true "Smooth Streaming references")
+
+    _Smooth Streaming references_
+
 1. Open **MainPage.xaml** to open the markup code for the main page of the app.
+
+1. At the top of the file, add the following XML namespace reference.
+
+	````XML
+	xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
+	````
 
 1. Open the toolbox at the left corner of the screen and extend the **Common XAML Controls** section. Drag and drop the **MediaPlayer** control into the designer. Notice the markup code generated in the xaml file for this control.
 
@@ -410,27 +424,41 @@ In this task you will create a new C# Store app from scratch and add video contr
 
     _Generated Code for Media Player Control_
 
-1. In the MediaPlayer element of the **MainPage.xaml** file, add the **x:Name** property with the value _videoPlayer_.
+1. In the MediaPlayer element of the **MainPage.xaml** file, add the **x:Name** property with the value _videoPlayer_, and add the **Source** property, pointing to the URL of the video enconded in smooth streaming at the end of exercise 2.
 
 	````XML
-	<PlayerFramework:MediaPlayer x:Name="videoPlayer"  HorizontalAlignment="Left" Height="600" Margin="200,96,0,0" VerticalAlignment="Top" Width="1000"/>
+	<PlayerFramework:MediaPlayer x:Name="videoPlayer"  HorizontalAlignment="Left"
+	Height="600" Margin="200,96,0,0" VerticalAlignment="Top" Width="1000"
+ Source ="[YOUR-MEDIA-SERVICE-VIDEO-URL]"/>
 	````
 
-1. Open the **MainPage.xaml.cs** file and add the following code in the **OnNavigatedTo** event. Make sure you replace the _YOUR-MEDIA-SERVICE-VIDEO-URL_ placeholder with the URL of the encoded video that you uploaded in Exercise 1.
+1. Modify the MediaPlayer control Xaml to add the Adaptive plugin to the plugins collection on the player framework, as shown in the following code.
 
-	<!-- mark:3 -->
-	````C#
-	protected override void OnNavigatedTo(NavigationEventArgs e)
-	{
-		this.videoPlayer.Source = new Uri(@"{YOUR-MEDIA-SERVICE-ENCODED-VIDEO-URL}");
-	}
+	````XML
+	<PlayerFramework:MediaPlayer x:Name="videoPlayer"
+                                HorizontalAlignment="Left"
+                                Height="600"
+                                Margin="200,96,0,0"
+                                VerticalAlignment="Top"
+                                Width="1000"
+								Source ="[YOUR-MEDIA-SERVICE-VIDEO-URL]">
+		<PlayerFramework:MediaPlayer.Plugins>
+			<adaptive:AdaptivePlugin />
+		</PlayerFramework:MediaPlayer.Plugins>
+	</PlayerFramework:MediaPlayer>
 	````
+
+1. Before compiling the app, target your app to x86, x64, or ARM. Because the IIS Smooth Streaming Client is written in unmanaged code, **AnyCPU** will not work and instead you must target and build your app for each platform you wish to support. To do this, go to the **Debug** combobox in the toolbar, expand its options and click **Configuration Manager**. In the row of your current project, expand the options of the **Platform** combobox and select **x64**. Alternatively, you can choose **x86** or **ARM** if your processor supports them.
+
+	![Targeting the app to build to x64](Images/targeting-the-app-to-build-to-x64.png?raw=true "Targeting the app to build to x64")
+
+	_Targeting the app to build to x64_
 
 1. Press **F5** to start the app. You should see the video automatically playing in the video player that you inserted before.
 
-	![Store app running](Images/store-app-running.png?raw=true "Store app running")
+	![Store app playing the Smooth Streaming video](Images/store-app-running.png?raw=true "Store app playing the Smooth Streaming video")
 
-    _Store app running_
+    _Store app playing the Smooth Streaming video_
 
 ---
 
