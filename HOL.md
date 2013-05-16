@@ -609,9 +609,12 @@ In this task you will add an already pre-configured VMAP file to the local asset
 
 <a name="Summary"></a>
 ## Summary ##
-By completing this hands-on lab you have learnt how to:
+By completing this hands-on lab you have learned how to:
 
-- XXXXXXXXXXXXXXXXXXXX
-- XXXXXXXXXXXXXXXXXXXX
+- Create a Media Services subscription.
+- Upload, Encode, and Publish media content from the Windows Azure portal.
+- Programatically upload, encode, and publish media content using the Media Services SDK.
+- Use the Microsoft Media Platform Player Framefork to play smooth streaming content.
+- Monetize your media content using ads defined in a VMAP file. 
 
 ---
