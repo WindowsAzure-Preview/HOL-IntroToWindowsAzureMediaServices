@@ -398,7 +398,7 @@ In this task you will create a new C# Store app from scratch and add video contr
 
     _New Store App Solution Explorer_
 
-1. Add **Microsoft Player Framework Adaptive Streaming Plugin**, **Microsoft Smooth Streaming Client SDK for Windows 8**, and **Microsoft Visual C++ Runtime Package** to your project References. To do this, right-click the project, click **Add References**. In the **Reference Manager**, select the aforementioned references that are located under **Windows | Extensions** and click **Ok**.
+1. Add **Microsoft Player Framework Adaptive Streaming Plugin**, **Microsoft Smooth Streaming Client SDK for Windows 8**, and **Microsoft Visual C++ Runtime Package** to your project References. To do this, right-click the project, click **Add References**. In the **Reference Manager**, select the aforementioned references that are located under **Windows | Extensions** and click **OK**.
 
 	![Smooth Streaming references](Images/smooth-streaming-references.png?raw=true "Smooth Streaming references")
 
@@ -434,6 +434,7 @@ In this task you will create a new C# Store app from scratch and add video contr
 
 1. Modify the MediaPlayer control Xaml to add the Adaptive plugin to the plugins collection on the player framework, as shown in the following code.
 
+	<!--mark:8-10-->
 	````XML
 	<PlayerFramework:MediaPlayer x:Name="videoPlayer"
                                 HorizontalAlignment="Left"
@@ -450,7 +451,9 @@ In this task you will create a new C# Store app from scratch and add video contr
 
 1. Before compiling the app, target your app to x86, x64, or ARM. Because the IIS Smooth Streaming Client is written in unmanaged code, **AnyCPU** will not work and instead you must target and build your app for each platform you wish to support. To do this, go to the **Debug** combobox in the toolbar, expand its options and click **Configuration Manager**. In the row of your current project, expand the options of the **Platform** combobox and select **x64**. Alternatively, you can choose **x86** or **ARM** if your processor supports them.
 
-	![Targeting the app to build to x64](Images/targeting-the-app-to-build-to-x64.png?raw=true "Targeting the app to build to x64")
+	![Targeting the app to build to x64](Images/targeting-app-build-x64-1.png?raw=true "Targeting the app to build to x64")
+
+	![Targeting the app to build to x64](Images/targeting-app-build-x64-2.png?raw=true "Targeting the app to build to x64")
 
 	_Targeting the app to build to x64_
 

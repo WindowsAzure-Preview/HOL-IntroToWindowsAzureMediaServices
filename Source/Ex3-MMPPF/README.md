@@ -1,1 +1,1 @@
-﻿Before executing the end solution provided for Exercise 3, make sure you updated the _{YOUR-MEDIA-SERVICE-ENCODED-VIDEO-URL}_ placeholder in the **SampleMediaPlayer/MainPage.xaml** file with the URL of the encoded video that you uploaded in Exercise 1.
+﻿Before executing the end solution provided for Exercise 3, make sure you updated the _[YOUR-MEDIA-SERVICE-ENCODED-VIDEO-URL]_ placeholder in the **SampleMediaPlayer/MainPage.xaml** file with the URL of the video encoded in smooth streaming that you uploaded in Exercise 2.
