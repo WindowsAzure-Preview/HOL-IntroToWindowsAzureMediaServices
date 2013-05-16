@@ -14,7 +14,7 @@ In this hands-on lab you will learn how you can use Visual Studio 2012 and Windo
 ### Objectives ###
 - Create a Windows Azure Media Service
 - Manage media content: upload, encode and stream media.
-- Programatically uploading, encoding and streaming content 
+- Programmatically uploading, encoding and streaming content 
 - Using the Microsoft Media Platform Player Framework in a Windows 8 application
 - Adding Advertisements support to your Windows 8 video application
 
@@ -84,7 +84,7 @@ Currently you can perform the following content operations directly from the por
 - Publish/Unpublish content 
 - Delete content
 
-On this task yu will upload, encode and publish media content from the portal.
+On this task you will upload, encode and publish media content from the portal.
 
 **Uploading content**
 
@@ -202,7 +202,7 @@ In this exercise, you will create a new console application that allows you to p
 
 	_Programmatically uploading a video_
 
-1. Copy this code an paste it in inside the **Main** method, between the lines that notify about the uploading process. The resulting code will be similar to the following one.
+1. Copy this code and paste it in inside the **Main** method, between the lines that notify about the uploading process. The resulting code will be similar to the following one.
 
 	<!-- mark:5-9 -->
 	````C#
@@ -275,8 +275,8 @@ In this exercise, you will create a new console application that allows you to p
     Console.WriteLine("Encoding Completed"); 
 	````
 
-	The preceding code uses the **CloudMediaContext** instance to create an encoding job with an enconding task to the specified preset. In this case a smooth streaming encoding (H264 Smooth Streaming 720p) is used.
-	Then the job is submited. Notice that an event handler is attached to the **StateChanged** event of the job, what means that every time the stats of the job changes that will be prompted to the console.
+	The preceding code uses the **CloudMediaContext** instance to create an encoding job with an encoding task to the specified preset. In this case a smooth streaming encoding (H264 Smooth Streaming 720p) is used.
+	Then the job is submitted. Notice that an event handler is attached to the **StateChanged** event of the job, what means that every time the stats of the job changes that will be prompted to the console.
 
 <a name="programmatically-delivering-and-streaming-a-mp4-video" />
 ### Task 3 - Programmatically Delivering and Streaming a Mp4 video ###
@@ -344,7 +344,7 @@ In this exercise, you will create a new console application that allows you to p
 
 	_The smooth streaming video being played_
 
-	>**Note:** You may notice that this video plays faster that the one uploaded in exercise one. This is due to smooth streaming, as it encodes the video in several qualities and will send you the better video according to your bandwith.
+	>**Note:** You may notice that this video plays faster than the one uploaded in exercise one. This is due to smooth streaming, as it encodes the video in several qualities and will send you the better video according to your bandwidth.
 
 ---
 
@@ -424,7 +424,7 @@ In this task you will create a new C# Store app from scratch and add video contr
 
     _Generated Code for Media Player Control_
 
-1. In the MediaPlayer element of the **MainPage.xaml** file, add the **x:Name** property with the value _videoPlayer_, and add the **Source** property, pointing to the URL of the video enconded in smooth streaming at the end of exercise 2.
+1. In the MediaPlayer element of the **MainPage.xaml** file, add the **x:Name** property with the value _videoPlayer_, and add the **Source** property, pointing to the URL of the video encoded in smooth streaming at the end of exercise 2.
 
 	````XML
 	<PlayerFramework:MediaPlayer x:Name="videoPlayer"  HorizontalAlignment="Left"
@@ -532,7 +532,7 @@ One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlis
 
 In this task you will add an already pre-configured VMAP file to the local assets folder of the application and explore its main content. Finally, you will run the application to check that the advertisements are displayed at the beginning of the video.
 
-1. In Solution Explorer, right-click the **Assets** folder of the SampleMediaPlayerProject and select **Add | Existing Item**. Browse to the **Source/Assets** folder of this lab, select the _vmap.xml_ file and click **Add**.
+1. In Solution Explorer, right-click the **Assets** folder of the SampleMediaPlayer project and select **Add | Existing Item**. Browse to the **Source/Assets** folder of this lab, select the _vmap.xml_ file and click **Add**.
 
 	![Importing the VMAP file](Images/importing-the-vmap-file.png?raw=true "Importing the VMAP file")
 
@@ -613,8 +613,8 @@ By completing this hands-on lab you have learned how to:
 
 - Create a Media Services subscription.
 - Upload, Encode, and Publish media content from the Windows Azure portal.
-- Programatically upload, encode, and publish media content using the Media Services SDK.
-- Use the Microsoft Media Platform Player Framefork to play smooth streaming content.
+- Programmatically upload, encode, and publish media content using the Media Services SDK.
+- Use the Microsoft Media Platform Player Framework to play smooth streaming content.
 - Monetize your media content using ads defined in a VMAP file. 
 
 ---
