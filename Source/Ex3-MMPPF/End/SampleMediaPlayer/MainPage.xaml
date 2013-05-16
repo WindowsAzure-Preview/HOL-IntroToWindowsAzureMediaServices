@@ -5,21 +5,24 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:PlayerFramework="using:Microsoft.PlayerFramework"
       xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
+      xmlns:ads="using:Microsoft.PlayerFramework.Advertising"
       x:Class="SampleMediaPlayer.MainPage"
       mc:Ignorable="d">
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
 
-        <PlayerFramework:MediaPlayer x:Name="videoPlayer"
-                                     HorizontalAlignment="Left"
-                                     Height="600"
-                                     Margin="200,96,0,0"
-                                     VerticalAlignment="Top"
-                                     Width="1000"
-                                     Source="[YOUR-MEDIA-SERVICE-ENCODED-VIDEO-URL]">
-            <PlayerFramework:MediaPlayer.Plugins>
-                <adaptive:AdaptivePlugin />
-            </PlayerFramework:MediaPlayer.Plugins>
-        </PlayerFramework:MediaPlayer>
+    <PlayerFramework:MediaPlayer x:Name="videoPlayer"
+                                    HorizontalAlignment="Left"
+                                    Height="600"
+                                    Margin="200,96,0,0"
+                                    VerticalAlignment="Top"
+                                    Width="1000"
+                                    Source="http://mediadl.microsoft.com/mediadl/iisnet/smoothmedia/Experience/BigBuckBunny_720p.ism/Manifest">
+        <PlayerFramework:MediaPlayer.Plugins>
+            <adaptive:AdaptivePlugin />
+                <ads:VmapSchedulerPlugin Source="http://dpeshare.blob.core.windows.net/mediaserviceslabassets/vmap.xml" />
+            <ads:AdHandlerPlugin />
+        </PlayerFramework:MediaPlayer.Plugins>
+    </PlayerFramework:MediaPlayer>
     </Grid>
 </Page>

@@ -468,7 +468,7 @@ In this task you will create a new C# Store app from scratch and add video contr
 <a name="Exercise4" />
 ## Exercise 4: Monetization ##
 
-<INTRO>
+In this exercise you will add advertisements support to your application, by using a VMAP file that defines the ads that will be played and at which moment, along with other .
 
 <a name="adding-advertisements-using-a-vmap-file-to-a-windows8-video-app" />
 ### Task 1 - Adding advertisements using a VMAP file to a Windows 8 video app ###
@@ -489,25 +489,38 @@ In this task you will create a new C# Store app from scratch and add video contr
 	xmlns:ads="using:Microsoft.PlayerFramework.Advertising"
 	````
 
-1. Now you will add a new **VmapSchedulerPlugin** to the MediaPlayer that you added in the previous exercise pointing to a _vmap.xml_ file already uploaded in a blob storage. To do this, replace the _PlayerFramework:MediaPlayer_ element with the following code.
-
+1. Change the **Source** property of the **MediaPlayer** control to point to this smooth streaming video: http://mediadl.microsoft.com/mediadl/iisnet/smoothmedia/Experience/BigBuckBunny_720p.ism/Manifest. The resulting code will be similar to the following.
+	<!-- mark:7 -->
 	````XML
-	<PlayerFramework:MediaPlayer x:Name="videoPlayer" HorizontalAlignment="Left" Height="600" Margin="200,96,0,0" VerticalAlignment="Top" Width="1000" >
-		<PlayerFramework:MediaPlayer.Plugins>
-			 <ads:VmapSchedulerPlugin Source="http://smf.blob.core.windows.net/samples/win8/ads/vmap.xml"/>
-			 <ads:AdHandlerPlugin />
-		</PlayerFramework:MediaPlayer.Plugins>
-	</PlayerFramework:MediaPlayer>
+    <PlayerFramework:MediaPlayer x:Name="videoPlayer"
+                                    HorizontalAlignment="Left"
+                                    Height="600"
+                                    Margin="200,96,0,0"
+                                    VerticalAlignment="Top"
+                                    Width="1000"
+                                    Source="http://mediadl.microsoft.com/mediadl/iisnet/smoothmedia/Experience/BigBuckBunny_720p.ism/Manifest">
+        <PlayerFramework:MediaPlayer.Plugins>
+            <adaptive:AdaptivePlugin />
+        </PlayerFramework:MediaPlayer.Plugins>
+    </PlayerFramework:MediaPlayer>
 	````
 
-1. Open the **MainPage.xaml.cs** file and replace the _YOUR-MEDIA-SERVICE-VIDEO-URL_ placeholder in the **OnNavigatedTo** event with the URL of the encoded video that you uploaded in Exercise 2.
-
-	<!-- mark:3 -->
-	````C#
-	protected override void OnNavigatedTo(NavigationEventArgs e)
-	{
-		this.videoPlayer.Source = new Uri(@"{YOUR-MEDIA-SERVICE-ENCODED-VIDEO-URL}");
-	}
+1. Now you will add a new **VmapSchedulerPlugin** to the MediaPlayer that you added in the previous exercise pointing to a _vmap.xml_ file already uploaded in a blob storage. To do this, replace the _PlayerFramework:MediaPlayer_ element with the following code.
+	<!-- mark:10-11 -->
+	````XML
+	<PlayerFramework:MediaPlayer x:Name="videoPlayer"
+                                    HorizontalAlignment="Left"
+                                    Height="600"
+                                    Margin="200,96,0,0"
+                                    VerticalAlignment="Top"
+                                    Width="1000"
+                                    Source="http://mediadl.microsoft.com/mediadl/iisnet/smoothmedia/Experience/BigBuckBunny_720p.ism/Manifest">
+		<PlayerFramework:MediaPlayer.Plugins>
+			<adaptive:AdaptivePlugin />
+			<ads:VmapSchedulerPlugin Source="http://dpeshare.blob.core.windows.net/mediaserviceslabassets/vmap.xml" />
+			<ads:AdHandlerPlugin />
+		</PlayerFramework:MediaPlayer.Plugins>
+	</PlayerFramework:MediaPlayer>
 	````
 
 1. Press **F5** to start the app. Notice that the advertise is displayed at the beginning of the video.

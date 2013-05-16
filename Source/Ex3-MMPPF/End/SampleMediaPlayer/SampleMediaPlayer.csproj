@@ -110,6 +110,9 @@
     <SDKReference Include="Microsoft.PlayerFramework.Xaml.Adaptive, Version=1.8.1.0">
       <Name>Microsoft Player Framework Adaptive Streaming Plugin</Name>
     </SDKReference>
+    <SDKReference Include="Microsoft.PlayerFramework.Xaml.Advertising, Version=1.8.1.0">
+      <Name>Microsoft Player Framework Advertising Plugin</Name>
+    </SDKReference>
     <SDKReference Include="Microsoft.VCLibs, Version=11.0">
       <Name>Microsoft Visual C++ Runtime Package</Name>
     </SDKReference>
