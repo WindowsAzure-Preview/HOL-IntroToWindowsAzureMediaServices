@@ -10,11 +10,11 @@
     <Name></Name>
   </Author>
   <Description>
-	XXXXXXXXXXXXXXXXXXXXXXXXXXX.
+	In this hands-on lab you will learn how you can use Visual Studio 2012 and Windows Azure Media Services to upload, encode, deliver and stream media content. Additionally, you will learn how to add a media player to your Windows Store applications and how to monetize your application using advertisements in the player.
   </Description>
   <Document ConversionType="Html">.\HOL.md</Document>
   <Title>Introduction to Windows Azure Media Services</Title>
-  <Version>1.0.3</Version>
+  <Version>1.0.0</Version>
   <Source>.\Source</Source>
   <DependencyChecker>.\Source\Setup\Dependencies.depi</DependencyChecker>
   <CustomProperties>

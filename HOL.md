@@ -8,7 +8,7 @@ Windows Azure Media Services allows you to build a media distribution solution t
 
 ![Media Services Overview](Images/media-services-overview.png?raw=true "Media Services Overview")
 
-In this HOL you will learn how you can use Visual Studio 2012 and Windows Azure Media Services to upload, encode,  deliver and stream media content. Additionally, you will learn how to add a media player to your Windows Store applications and how to monetize your application using advertisements in the player.
+In this hands-on lab you will learn how you can use Visual Studio 2012 and Windows Azure Media Services to upload, encode,  deliver and stream media content. Additionally, you will learn how to add a media player to your Windows Store applications and how to monetize your application using advertisements in the player.
 
 <a name="Objectives" />
 ### Objectives ###
@@ -509,7 +509,7 @@ One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlis
     </PlayerFramework:MediaPlayer>
 	````
 
-1. Now you will add a new **VmapSchedulerPlugin** to the MediaPlayer that you added in the previous exercise pointing to a _vmap.xml_ file already uploaded in a blob storage. To do this, replace the _PlayerFramework:MediaPlayer_ element with the following code.
+1. Now you will add a new **VmapSchedulerPlugin** to the MediaPlayer that you added in the previous exercise pointing to a _vmap.xml_ file that you will add to the local assets folder of the project in the next task. To do this, replace the _PlayerFramework:MediaPlayer_ element with the following code.
 	<!-- mark:10-11 -->
 	````XML
 	<PlayerFramework:MediaPlayer x:Name="videoPlayer"
@@ -521,17 +521,91 @@ One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlis
                                     Source="http://mediadl.microsoft.com/mediadl/iisnet/smoothmedia/Experience/BigBuckBunny_720p.ism/Manifest">
 		<PlayerFramework:MediaPlayer.Plugins>
 			<adaptive:AdaptivePlugin />
-			<ads:VmapSchedulerPlugin Source="http://dpeshare.blob.core.windows.net/mediaserviceslabassets/vmap.xml" />
+			<ads:VmapSchedulerPlugin Source="ms-appx:///Assets/vmap.xml" />
 			<ads:AdHandlerPlugin />
 		</PlayerFramework:MediaPlayer.Plugins>
 	</PlayerFramework:MediaPlayer>
 	````
 
-1. Press **F5** to start the app. Notice that the advertise is displayed at the beginning of the video.
+<a name="exploring-vmap-file-and-running-app" />
+### Task 2 - Exploring the VMAP file and running the app ###
 
-	![Running app with Advertising](Images/advertising-in-running-app.png?raw=true "Running app with Advertising")
+In this task you will add an already pre-configured VMAP file to the local assets folder of the application and explore its main content. Finally, you will run the application to check that the advertisements are displayed at the beginning of the video.
 
-    _Running app with Advertising_
+1. In Solution Explorer, right-click the **Assets** folder of the SampleMediaPlayerProject and select **Add | Existing Item**. Browse to the **Source/Assets** folder of this lab, select the _vmap.xml_ file and click **Add**.
+
+	![Importing the VMAP file](Images/importing-the-vmap-file.png?raw=true "Importing the VMAP file")
+
+    _Importing the VMAP file_
+
+	> **Note:** The vmap.xml file is inserted in the local assets folder of the solution just for example purposes. However, you should not distribute this file in your solutions as anybody could modify the advertisements that you wish to display. Ideally, this file should be placed in your Advertisement Server along with the advertising content.
+
+1. Open the **vmap.xml** file and explore its content.
+
+	````XML
+	<vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
+		<vmap:AdBreak breakType="linear" breakId="mypre" timeOffset="start">
+			<vmap:AdSource allowMultipleAds="true" followRedirects="true" id="1">
+				<vmap:VASTData>
+				  <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
+					 <Ad id="115571748">
+						<InLine>
+						  ...
+						  <Creatives>
+							 <Creative id="video" sequence="0" AdID="">
+								<Linear>
+								  <Duration>00:00:32</Duration>
+								  <MediaFiles>
+									 <MediaFile apiFramework="Windows Media" id="windows_progressive_200" maintainAspectRatio="true" scaleable="true"  delivery="progressive" bitrate="200" width="400" height="300" type="video/x-ms-wmv">
+										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
+									 </MediaFile>
+									 <MediaFile apiFramework="Windows Media" id="windows_progressive_300" maintainAspectRatio="true" scaleable="true"  delivery="progressive" bitrate="300" width="400" height="300" type="video/x-ms-wmv">
+										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
+									 </MediaFile>
+									 <MediaFile apiFramework="Windows Media" id="windows_progressive_500" maintainAspectRatio="true" scaleable="true"  delivery="progressive" bitrate="500" width="400" height="300" type="video/x-ms-wmv">
+										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
+									 </MediaFile>
+									 <MediaFile apiFramework="Windows Media" id="windows_progressive_700" maintainAspectRatio="true" scaleable="true" delivery="progressive" bitrate="700" width="400" height="300" type="video/x-ms-wmv">
+										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
+									 </MediaFile>
+								  </MediaFiles>
+								</Linear>
+							 </Creative>
+						  </Creatives>
+						</InLine>
+					 </Ad>
+				  </VAST>
+				</vmap:VASTData>
+			</vmap:AdSource>
+		<vmap:TrackingEvents>
+		...
+		</vmap:TrackingEvents>
+		</vmap:AdBreak>
+	</vmap:VMAP>
+	````
+
+	The **Video Multiple Ad Playlist (VMAP)** specification is an XML template that video content owners can use to describe the structure for ad inventory insertion when they don’t control the video player or the content distribution outlet. VMAP represents a playlist structure that wraps one or more ad responses. This structure defines the ad breaks within a video program, identifying details such as how many ad breaks, which ad types to display, and when each ad break should occur. VMAP cannot provide ads directly. Instead, a VMAP response must contain separate ad responses that define which ads to display. While any ad response format can be used, VMAP was designed to accept VAST ad responses.
+
+	**VMAP elements**
+
+	- **AdBreak:** A location or point in time where one or more ads may be scheduled for delivery.
+	- **AdSource:** Identifies the ads to be displayed in an ad break, either with an ad response inline or by referencing an ad response in another system.
+	- **VASTData:** A container for all the Ads to be displayed according to the AdBreak. Here is where the media files are referenced.
+	- **TrackingEvents:** Its used to track the start and end of an ad break and whether an error occurred during the ad break.
+
+	> **Note:** The media files used in the provided VMAP file are videos already uploaded to a blob storage. Their URIs can be found inside the MediaFile elements of the vmap.xml file.
+
+	For more information regarding VMAP, you can check the official [documentation](http://www.iab.net/media/file/VMAPv1.0.pdf).
+
+1. Press **F5** to start the app. Notice that the advertisement gets played in the video player according to the information provided in the VMAP file. When it ends, you should see the main content video starting.
+
+	![Advertisement in running app](Images/advertisement-in-running-app.png?raw=true "Advertisement in running app")
+
+    _Advertisement in running app_
+
+	![Main content in running app](Images/main-content-in-running-app.png?raw=true "Main content in running app")
+
+    _Main content in running app_
 
 <a name="Summary"></a>
 ## Summary ##
