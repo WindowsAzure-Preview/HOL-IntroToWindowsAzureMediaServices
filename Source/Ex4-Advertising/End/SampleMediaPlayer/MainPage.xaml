@@ -5,6 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:PlayerFramework="using:Microsoft.PlayerFramework"
       xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
+      xmlns:ads="using:Microsoft.PlayerFramework.Advertising"
       x:Class="SampleMediaPlayer.MainPage"
       mc:Ignorable="d">
 
@@ -16,9 +17,11 @@
                                      Margin="200,96,0,0"
                                      VerticalAlignment="Top"
                                      Width="1000"
-                                     Source="[YOUR-MEDIA-SERVICE-ENCODED-VIDEO-URL]">
+                                     Source="http://mediadl.microsoft.com/mediadl/iisnet/smoothmedia/Experience/BigBuckBunny_720p.ism/Manifest">
             <PlayerFramework:MediaPlayer.Plugins>
                 <adaptive:AdaptivePlugin />
+                <ads:VmapSchedulerPlugin Source="ms-appx:///Assets/vmap.xml"/>
+                <ads:AdHandlerPlugin />
             </PlayerFramework:MediaPlayer.Plugins>
         </PlayerFramework:MediaPlayer>
     </Grid>
