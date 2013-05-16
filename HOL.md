@@ -468,7 +468,11 @@ In this task you will create a new C# Store app from scratch and add video contr
 <a name="Exercise4" />
 ## Exercise 4: Monetization ##
 
-In this exercise you will add advertisements support to your application, by using a VMAP file that defines the ads that will be played and at which moment, along with other .
+In this exercise you will add advertisements support to  monetize your application, by using a VMAP file that defines the ads that will be played and at which moment.
+
+Scheduling is the first step to playing ads in the player framework. This allows your app to telling the player framework when to play each ad. Ad scheduling is separate from the ad handling (playing the ad) and is independent of the type of ad you want to play.
+
+One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlist). [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap) is an IAB recommended xml schema that defines when ads should play for a given piece of content. The player framework includes a VMAP scheduler plugin that will download, parse and consume to control the timing of ads for you.
 
 <a name="adding-advertisements-using-a-vmap-file-to-a-windows8-video-app" />
 ### Task 1 - Adding advertisements using a VMAP file to a Windows 8 video app ###
