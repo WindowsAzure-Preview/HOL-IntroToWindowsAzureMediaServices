@@ -588,10 +588,13 @@ In this task you will add an already pre-configured VMAP file to the local asset
 
 	**VMAP elements**
 
-	- **AdBreak:** A location or point in time where one or more ads may be scheduled for delivery.
-	- **AdSource:** Identifies the ads to be displayed in an ad break, either with an ad response inline or by referencing an ad response in another system.
-	- **VASTData:** A container for all the Ads to be displayed according to the AdBreak. Here is where the media files are referenced.
-	- **TrackingEvents:** Its used to track the start and end of an ad break and whether an error occurred during the ad break.
+	**AdBreak:** A location or point in time where one or more ads may be scheduled for delivery.
+	
+	**AdSource:** Identifies the ads to be displayed in an ad break, either with an ad response inline or by referencing an ad response in another system.
+	
+	**VASTData:** A container for all the Ads to be displayed according to the AdBreak. Here is where the media files are referenced.
+	
+	**TrackingEvents:** Its used to track the start and end of an ad break and whether an error occurred during the ad break.
 
 	> **Note:** The media files used in the provided VMAP file are videos already uploaded to a blob storage. Their URIs can be found inside the MediaFile elements of the vmap.xml file.
 
