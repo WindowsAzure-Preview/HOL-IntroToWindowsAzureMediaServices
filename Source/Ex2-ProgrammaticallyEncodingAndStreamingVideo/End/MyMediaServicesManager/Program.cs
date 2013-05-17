@@ -16,7 +16,7 @@ namespace MyMediaServicesManager
             Console.WriteLine("Uploading Video");
 
             var uploadFilePath = @"[YOUR FILE PATH]";
-            var context = new CloudMediaContext("[YOUR MEDIA SERVICE ACCOUNT NAME]", "[YOUR MEDIA SERVICE ACCOUNT KEY]");
+            var context = new CloudMediaContext("[YOUR MEDIA SERVICE ACCOUNT NAME]", @"[YOUR MEDIA SERVICE ACCOUNT KEY]");
             var uploadAsset = context.Assets.Create(Path.GetFileNameWithoutExtension(uploadFilePath), AssetCreationOptions.None);
             var assetFile = uploadAsset.AssetFiles.Create(Path.GetFileName(uploadFilePath));
             assetFile.Upload(uploadFilePath);
