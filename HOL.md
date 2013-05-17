@@ -157,14 +157,14 @@ In this task you will upload, encode and publish media content from the portal.
 <a name="Exercise2" />
 ## Exercise 2: A Console app using the Media Services SDK that uploads, encodes, and streams a video programmatically ##
 
-In this exercise, you will create a new console application that allows you to perform the different tasks on your Azure Media Services subscription.
+In this exercise, you will create a new console application that allows you to perform the different tasks (uploading, encoding, and publishing) on your Azure Media Services subscription. This application uses the Media Services SDK to accomplish these operations.
 
 <a name="programmatically-uploading-a-mp4-video" />
 ### Task 1 - Programmatically Uploading a Mp4 video ###
 
 1. Open **Microsoft Visual Studio 2012 Express for Web** (or higher) in elevated administrator mode. If the **User Account Control** dialog appears, click **Yes**.
 
-1. In the **File** menu, choose **New** and then **Project/Solution**. In the New Project dialog, select the **Templates | C#** node from the left pane, and then select the **Console Application** template.
+1. In the **File** menu, choose **New** and then **Project/Solution**. In the **New Project** dialog, select the **Templates | C#** node from the left pane, and then select the **Console Application** template.
 
 1. Enter _MyMediaServicesManager_ as the project **Name**, choose a desired **Location**, and click **Ok**.
 
@@ -202,7 +202,7 @@ In this exercise, you will create a new console application that allows you to p
 
 	_Programmatically uploading a video_
 
-1. Copy this code and paste it in inside the **Main** method, between the lines that notify about the uploading process. The resulting code will be similar to the following one.
+1. Copy the code snippet shown in the portal and paste it in inside the **Main** method, between the lines that notify about the uploading process. The resulting code will be similar to the following one.
 
 	<!-- mark:5-9 -->
 	````C#
@@ -351,7 +351,8 @@ In this exercise, you will create a new console application that allows you to p
 <a name="Exercise3" />
 ## Exercise 3: Microsoft Media Platform Player Framework for the client  ##
 
-Microsoft Media Platform is a complete set of technologies for digital media encoding, delivery, and playback for virtually any network-connected device. The Player Framework is an open source video player available for Silverlight, HTML5, and Xbox, as well as Windows 8 apps and Windows Phone apps. It allows you to play both progressive download videos and Smooth Streaming videos. In this exercise you will first download and install the Microsoft Media Platform Player Framework and then build a simple Store app that will consume a video previously uploaded to Windows Azure Media Services and play it in a video player control.
+Microsoft Media Platform is a complete set of technologies for digital media encoding, delivery, and playback for virtually any network-connected device. The Player Framework is an open source video player available for Silverlight, HTML5, and Xbox, as well as Windows 8 apps and Windows Phone apps. It allows you to play both progressive download videos and Smooth Streaming videos.
+In this exercise you will first download and install the Microsoft Media Platform Player Framework and then build a simple Store app that will consume a video previously uploaded to Windows Azure Media Services and play it in a video player control.
 
 <a name="installing-MMPPF" />
 ### Task 1 - Installing Microsoft Media Platform Player Framework ###
@@ -509,7 +510,7 @@ One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlis
     </PlayerFramework:MediaPlayer>
 	````
 
-1. Now you will add a new **VmapSchedulerPlugin** to the MediaPlayer that you added in the previous exercise pointing to a _vmap.xml_ file that you will add to the local assets folder of the project in the next task. To do this, replace the _PlayerFramework:MediaPlayer_ element with the following code.
+1. Now you will add a new **VmapSchedulerPlugin** plugin to the MediaPlayer that you added in the previous exercise pointing to a _vmap.xml_ file that you will add to the local assets folder of the project in the next task. To do this, replace the _PlayerFramework:MediaPlayer_ element with the following code.
 	<!-- mark:10-11 -->
 	````XML
 	<PlayerFramework:MediaPlayer x:Name="videoPlayer"
@@ -600,7 +601,7 @@ In this task you will add an already pre-configured VMAP file to the local asset
 
 	For more information regarding VMAP, you can check the official [documentation](http://www.iab.net/media/file/VMAPv1.0.pdf).
 
-1. Press **F5** to start the app. Notice that the advertisement gets played in the video player according to the information provided in the VMAP file. When it ends, you should see the main content video starting.
+1. Press **F5** to start the app. Notice that the advertisement is played in the video player according to the information provided in the VMAP file. When it ends, you should see the main content video starting.
 
 	![Advertisement in running app](Images/advertisement-in-running-app.png?raw=true "Advertisement in running app")
 
