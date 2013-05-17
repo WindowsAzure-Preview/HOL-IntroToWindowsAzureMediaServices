@@ -30,7 +30,7 @@ In this hands-on lab you will learn how you can use Visual Studio 2012 and Windo
 This hands-on lab includes the following exercises:
 
 1. [Uploading a Job from the Portal for HTML5 playback](#Exercise1)
-1. [A Console app using the Media Services SDK that uploads, encodes, and streams a video programmatically](#Exercise2)
+1. [Building A Console app using the Media Services SDK that uploads, encodes, and streams a video programmatically](#Exercise2)
 1. [Microsoft Media Platform Player Framework for the client](#Exercise3)
 1. [Monetization](#Exercise4)
 
@@ -155,7 +155,7 @@ In this task you will upload, encode and publish media content from the portal.
 ---
 
 <a name="Exercise2" />
-## Exercise 2: A Console app using the Media Services SDK that uploads, encodes, and streams a video programmatically ##
+## Exercise 2: Building A Console app using the Media Services SDK that uploads, encodes, and streams a video programmatically ##
 
 In this exercise, you will create a new console application that allows you to perform the different tasks on your Azure Media Services subscription.
 
