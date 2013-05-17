@@ -62,7 +62,7 @@ This task explains how to use the Quick Create method to create a new Media Serv
  
 1. If you created a new storage account, in **NEW STORAGE ACCOUNT NAME**, enter a name for the storage account. The rules for storage account names are the same as for Media Services accounts.
 
-1. Click **Quick Create** at the bottom of the form.
+1. Click **Create Media Service** at the bottom of the form.
 
 	You can monitor the status of the process in the message area at the bottom of the window.
 The **media services** page opens with the new account displayed. When the status changes to Active, it means the account is successfully created.
