@@ -4,11 +4,11 @@
 ---
 <a name="Overview" />
 ## Overview ##
-Windows Azure Media Services allows you to build a media distribution solution that can stream audio and video to Windows, iOS, Android, and other devices and platforms. It offer the flexibility, scalability and reliability of a cloud platform to handle high quality media experiences for a global audience. Media Services includes cloud-based versions of many existing technologies from the Microsoft Media Platform and our media partners, including ingest, encoding, format conversion, content protection and both on-demand and live streaming capabilities. Whether enhancing existing solutions or creating new workflows, you can easily combine and manage Media Services to create custom workflows that fit every need.
+Windows Azure Media Services allows you to build a media distribution solution that can stream audio and video to Windows, iOS, Android, and other devices and platforms. It offers the flexibility, scalability and reliability of a cloud platform to handle high quality media experiences for a global audience. Media Services includes cloud-based versions of many existing technologies from the Microsoft Media Platform and media partners, including ingest, encoding, format conversion, content protection and both on-demand and live streaming capabilities.
 
 ![Media Services Overview](Images/media-services-overview.png?raw=true "Media Services Overview")
 
-In this hands-on lab you will learn how you can use Visual Studio 2012 and Windows Azure Media Services to upload, encode,  deliver and stream media content. Additionally, you will learn how to add a media player to your Windows Store applications and how to monetize your application using advertisements in the player.
+In this hands-on lab you will learn how you can use Visual Studio 2012 and Windows Azure Media Services to upload, encode, deliver and stream media content, as well as performing these operations from the portal. Additionally, you will learn how to add a media player to your Windows Store applications and how to monetize your application using advertisements in the media player.
 
 <a name="Objectives" />
 ### Objectives ###
@@ -84,11 +84,11 @@ Currently you can perform the following content operations directly from the por
 - Publish/Unpublish content 
 - Delete content
 
-On this task you will upload, encode and publish media content from the portal.
+In this task you will upload, encode and publish media content from the portal.
 
 **Uploading content**
 
-1. In the [Management Portal](http://go.microsoft.com/fwlink/?linkid=256666&clcid=0x409), click **Media Services** and then click on the Media Services account name.
+1. In the [Management Portal](http://go.microsoft.com/fwlink/?linkid=256666&clcid=0x409), click **Media Services** and then click the Media Services account name.
 
 1. Click the **Content** view at the top of the page. Your view should look similar to the following screen shot.
 
@@ -98,11 +98,11 @@ On this task you will upload, encode and publish media content from the portal.
  
 1. Click the **Upload** button at the bottom of the portal. 
 
-1. In the Upload Content dialog, click **Browse Your Computer** and browse to the desired asset file. Click the file and then click **Open** or press **Enter**.
+1. In the **Upload Content** dialog, click **Browse Your Computer** and browse to the desired asset file. Click the file and then click **Open** or press **Enter**.
 
-	>**Note:** You can use the following short video to try uploading content to Media Services: [Azure_Intro.mp4](<https://cloudnick.blob.core.windows.net/drop/Azure_Intro.mp4>)
+	>**Note:** You can use the following short video to try uploading content to Media Services: [Azure_Intro.mp4](http://dpeshare.blob.core.windows.net/mediaserviceslabassets/Azure_Intro.mp4)
  
-1. In the Upload Content dialog, click the check button to accept the File and Content Name.
+1. In the **Upload Content** dialog, click the check button to accept the File and Content Name.
 
 	![Upload Content dialog](Images/upload-content-dialog.png?raw=true "Upload Content dialog")
 
@@ -120,9 +120,9 @@ On this task you will upload, encode and publish media content from the portal.
 
 **Encoding content**
 
-1. Click on the desired source video that you have just uploaded, and then click **Encode** at the bottom of the page.
+1. Click on the desired source video, in this case the one that you have just uploaded, and then click **Encode** at the bottom of the page.
 
-1. In the Windows Azure Media Encoder dialog, choose from one of the common or advanced encoding presets. For this task purposes, choose **Playback via HTML5 (IE/Chrome/Safari)**.
+1. In the **Windows Azure Media Encoder** dialog, choose from one of the common or advanced encoding presets. For this task purposes, choose **Playback via HTML5 (IE/Chrome/Safari)**. More information about the presets:
 
 	**Common Presets**
 
@@ -150,7 +150,7 @@ On this task you will upload, encode and publish media content from the portal.
 
 **Playing content from the portal**
  
-1. Click on the published video content and click the **Play** button at the bottom of the portal. Only content that has been published is playable from the portal. Also, the encoding must be supported by your browser.
+1. Click the published video content and click the **Play** button at the bottom of the portal. Only content that has been published is playable from the portal. Also, the encoding must be supported by your browser.
 
 ---
 
