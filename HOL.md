@@ -493,7 +493,7 @@ One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlis
 	xmlns:ads="using:Microsoft.PlayerFramework.Advertising"
 	````
 
-1. Change the **Source** property of the **MediaPlayer** control to point to this smooth streaming video: http://mediadl.microsoft.com/mediadl/iisnet/smoothmedia/Experience/BigBuckBunny_720p.ism/Manifest. The resulting code will be similar to the following.
+1. Change the **Source** property of the **MediaPlayer** control to point to the URL of the video encoded in smooth streaming at the end of exercise 2. The resulting code will be similar to the following.
 	<!-- mark:7 -->
 	````XML
     <PlayerFramework:MediaPlayer x:Name="videoPlayer"
@@ -502,7 +502,7 @@ One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlis
                                     Margin="200,96,0,0"
                                     VerticalAlignment="Top"
                                     Width="1000"
-                                    Source="http://mediadl.microsoft.com/mediadl/iisnet/smoothmedia/Experience/BigBuckBunny_720p.ism/Manifest">
+                                    Source="[YOUR-MEDIA-SERVICE-VIDEO-URL]">
         <PlayerFramework:MediaPlayer.Plugins>
             <adaptive:AdaptivePlugin />
         </PlayerFramework:MediaPlayer.Plugins>
@@ -518,7 +518,7 @@ One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlis
                                     Margin="200,96,0,0"
                                     VerticalAlignment="Top"
                                     Width="1000"
-                                    Source="http://mediadl.microsoft.com/mediadl/iisnet/smoothmedia/Experience/BigBuckBunny_720p.ism/Manifest">
+                                    Source="[YOUR-MEDIA-SERVICE-VIDEO-URL]">
 		<PlayerFramework:MediaPlayer.Plugins>
 			<adaptive:AdaptivePlugin />
 			<ads:VmapSchedulerPlugin Source="ms-appx:///Assets/vmap.xml" />
@@ -606,7 +606,7 @@ In this task you will add an already pre-configured VMAP file to the local asset
 
     _Advertisement in running app_
 
-	![Main content in running app](Images/main-content-in-running-app.png?raw=true "Main content in running app")
+	![Main content in running app](Images/store-app-running.png?raw=true "Main content in running app")
 
     _Main content in running app_
 
