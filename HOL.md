@@ -48,7 +48,7 @@ This task explains how to use the Quick Create method to create a new Media Serv
 
 1. Log into the [Windows Azure Management Portal](https://manage.windowsazure.com).
 
-1. Click **New** | **App Services** | **Media Services**, and then click **Quick Create**.
+1. Click **New** | **App Services** | **Media Service**, and then click **Quick Create**.
 
 	![Creating a new Media Service](Images/creating-a-media-service.png?raw=true "Creating a new Media Service")
 
@@ -77,7 +77,7 @@ The **media services** page opens with the new account displayed. When the statu
 The Windows Azure Media Services content view allows you to manage media content for your Media Services account.
 Currently you can perform the following content operations directly from the portal:
 
-- View content information like published state, published URL, size, and datetime of last update. 
+- View content information like published state, published URL, size, and datetime of last update 
 - Upload new content 
 - Encode content 
 - Play content video 
@@ -140,13 +140,13 @@ In this task you will upload, encode and publish media content from the portal.
 
 	_Encoding Media_
 
-	Currently, the portal does not support all the encoding formats that are supported by the Media Encoder. It also does not support media asset encryption\decryption. You can perform these tasks programmatically, for more information see [Building Applications with the Media Services SDK for .NET] (http://go.microsoft.com/fwlink/?linkid=270866&clcid=0x409) and [Task Preset Strings for Windows Azure Media Encoder]( http://go.microsoft.com/fwlink/?linkid=270865&clcid=0x409).
+	Currently, the portal does not support all the encoding formats that are supported by the Media Encoder. It also does not support media asset encryption/decryption. You can perform these tasks programmatically, for more information see [Building Applications with the Media Services SDK for .NET] (http://go.microsoft.com/fwlink/?linkid=270866&clcid=0x409) and [Task Preset Strings for Windows Azure Media Encoder]( http://go.microsoft.com/fwlink/?linkid=270865&clcid=0x409).
 
 1. In the **Windows Azure Media Encoder** dialog, enter the desired friendly output content name or accept the default. Then click the check button to start the encoding operation and you can track progress from the bottom of the portal.
 
 **Publishing content**
 
-1. Click an asset which is not published, in this case, the video that was just encoded. Then click the publish button to publish to a public URL. Once the content is published to a URL, the URL can be opened by a client player capable of rendering the encoded content.
+1. Click an asset which is not published, in this case, the video that was just encoded. Then click the **Publish** button to publish to a public URL. Once the content is published to a URL, the URL can be opened by a client player capable of rendering the encoded content.
 
 **Playing content from the portal**
  
@@ -164,7 +164,7 @@ In this exercise, you will create a new console application that allows you to p
 
 1. Open **Microsoft Visual Studio 2012 Express for Windows 8** (or higher) in elevated administrator mode. If the **User Account Control** dialog appears, click **Yes**.
 
-1. In the **File** menu, choose **New** and then **Project/Solution**. In the **New Project** dialog, select the **Templates | C#** node from the left pane, and then select the **Console Application** template.
+1. In the **File** menu, choose **New project** and then **Project/Solution**. In the **New Project** dialog, select the **Templates | C#** node from the left pane, and then select the **Console Application** template.
 
 1. Enter _MyMediaServicesManager_ as the project **Name**, choose a desired **Location**, and click **Ok**.
 
@@ -172,14 +172,14 @@ In this exercise, you will create a new console application that allows you to p
 
 1. In the console, type _Install-Package windowsazure.mediaservices_ to download and install the **Windows Azure Media Services** NuGet package and its dependencies.
 
-1. In the _program.cs_ file add the following using statements.
+1. In the _Program.cs_ file add the following using statements.
 
 	````C#
 	using Microsoft.WindowsAzure.MediaServices.Client;
 	using System.IO;
 	````
 
-1. Paste the following code in the _program.cs_ file, inside the **Main** method. This code prompts the user about the different steps that the final app will perform, and will aid you in completing the exercise.
+1. Paste the following code in the _Program.cs_ file, inside the **Main** method. This code prompts the user about the different steps that the final app will perform, and will aid you in completing the exercise.
 
 	````C#
 	Console.WriteLine("Uploading Video");
@@ -196,7 +196,7 @@ In this exercise, you will create a new console application that allows you to p
 
 1. Go to the **Windows Azure Management Portal**, click **Media Services** in the left menu, and then click your **Media Services** name. The quickstart page will be displayed.
 
-1. Under the **WRITE SOME CODE** section, click **UPLOAD A VIDEO PROGRAMMATICALLY**.
+1. Make sure that **C#** is selected in the **Choose a language** section. Under the **WRITE SOME CODE** section, click **UPLOAD A VIDEO PROGRAMMATICALLY**.
 
 	![Programmatically uploading a video](Images/programatically-uploading-a-video.png?raw=true "Programmatically uploading a video")
 
@@ -234,13 +234,13 @@ In this exercise, you will create a new console application that allows you to p
 <a name="programmatically-encoding-a-mp4-video" />
 ### Task 2 - Programmatically Encoding a Mp4 video using Smooth Streaming ###
 
-1. Add the following using statement at the top of the _program.cs_ file.
+1. Add the following using statement at the top of the _Program.cs_ file.
 
 	````C#
 	using System.Threading;
 	````
 
-1. Add the following code inside the WriteLine blocks that notify about the initiation and termination of the encoding operation.
+1. Add the following code between the WriteLine blocks that notify about the initiation and termination of the encoding operation.
 
 	<!-- mark:3-26 -->
 	````C#
@@ -276,12 +276,12 @@ In this exercise, you will create a new console application that allows you to p
 	````
 
 	The preceding code uses the **CloudMediaContext** instance to create an encoding job with an encoding task to the specified preset. In this case a smooth streaming encoding (H264 Smooth Streaming 720p) is used.
-	Then the job is submitted. Notice that an event handler is attached to the **StateChanged** event of the job, what means that every time the stats of the job changes that will be prompted to the console.
+	Then the job is submitted. Notice that an event handler is attached to the **StateChanged** event of the job, what means that every time the state of the job changes that will be prompted to the console.
 
 <a name="programmatically-delivering-and-streaming-a-mp4-video" />
 ### Task 3 - Programmatically Delivering and Streaming a Mp4 video ###
 
-1. Add the following code inside the WriteLine blocks that notify about the initiation and termination of the publishing operation.
+1. Add the following code between the WriteLine blocks that notify about the initiation and termination of the publishing operation.
 
 	<!-- mark:3-32 -->
 	````C#
@@ -399,7 +399,7 @@ In this task you will create a new C# Store app from scratch and add video contr
 
     _New Store App Solution Explorer_
 
-1. Add **Microsoft Player Framework Adaptive Streaming Plugin**, **Microsoft Smooth Streaming Client SDK for Windows 8**, and **Microsoft Visual C++ Runtime Package** to your project References. To do this, right-click the project, click **Add References**. In the **Reference Manager**, select the aforementioned references that are located under **Windows | Extensions** and click **OK**.
+1. Add **Microsoft Player Framework Adaptive Streaming Plugin**, **Microsoft Smooth Streaming Client SDK for Windows 8**, and **Microsoft Visual C++ Runtime Package** to your project References. To do this, right-click the project, click **Add Reference**. In the **Reference Manager**, select the aforementioned references that are located under **Windows | Extensions** and click **OK**.
 
 	![Smooth Streaming references](Images/smooth-streaming-references.png?raw=true "Smooth Streaming references")
 
@@ -427,15 +427,20 @@ In this task you will create a new C# Store app from scratch and add video contr
 
 1. In the MediaPlayer element of the **MainPage.xaml** file, add the **x:Name** property with the value _videoPlayer_, and add the **Source** property, pointing to the URL of the video encoded in smooth streaming at the end of exercise 2.
 
+	<!-- mark:2,6 -->
 	````XML
-	<PlayerFramework:MediaPlayer x:Name="videoPlayer"  HorizontalAlignment="Left"
-	Height="600" Margin="200,96,0,0" VerticalAlignment="Top" Width="1000"
- Source ="[YOUR-MEDIA-SERVICE-VIDEO-URL]"/>
+	<PlayerFramework:MediaPlayer
+		x:Name="videoPlayer"
+		HorizontalAlignment="Left"
+		Height="600" Margin="200,96,0,0"
+		VerticalAlignment="Top" Width="1000"
+		Source ="[YOUR-MEDIA-SERVICE-VIDEO-URL]"
+	/>
 	````
 
 1. Modify the MediaPlayer control Xaml to add the Adaptive plugin to the plugins collection on the player framework, as shown in the following code.
 
-	<!--mark:8-10-->
+	<!--mark:8-12-->
 	````XML
 	<PlayerFramework:MediaPlayer x:Name="videoPlayer"
                                 HorizontalAlignment="Left"
@@ -443,7 +448,8 @@ In this task you will create a new C# Store app from scratch and add video contr
                                 Margin="200,96,0,0"
                                 VerticalAlignment="Top"
                                 Width="1000"
-								Source ="[YOUR-MEDIA-SERVICE-VIDEO-URL]">
+								Source ="[YOUR-MEDIA-SERVICE-VIDEO-URL]"
+	>
 		<PlayerFramework:MediaPlayer.Plugins>
 			<adaptive:AdaptivePlugin />
 		</PlayerFramework:MediaPlayer.Plugins>
@@ -471,7 +477,7 @@ In this task you will create a new C# Store app from scratch and add video contr
 
 In this exercise you will add advertisements support to  monetize your application, by using a VMAP file that defines the ads that will be played and at which moment.
 
-Scheduling is the first step to playing ads in the player framework. This allows your app to telling the player framework when to play each ad. Ad scheduling is separate from the ad handling (playing the ad) and is independent of the type of ad you want to play.
+Scheduling is the first step to play ads in the player framework. This allows your app to tell the player framework when to play each ad. Ad scheduling is separate from the ad handling (playing the ad) and is independent of the type of ad you want to play.
 
 One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlist). [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap) is an IAB recommended xml schema that defines when ads should play for a given piece of content. The player framework includes a VMAP scheduler plugin that will download, parse and consume to control the timing of ads for you.
 
