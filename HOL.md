@@ -162,7 +162,7 @@ In this exercise, you will create a new console application that allows you to p
 <a name="programmatically-uploading-a-mp4-video" />
 ### Task 1 - Programmatically Uploading a Mp4 video ###
 
-1. Open **Microsoft Visual Studio 2012 Express for Web** (or higher) in elevated administrator mode. If the **User Account Control** dialog appears, click **Yes**.
+1. Open **Microsoft Visual Studio 2012 Express for Windows 8** (or higher) in elevated administrator mode. If the **User Account Control** dialog appears, click **Yes**.
 
 1. In the **File** menu, choose **New** and then **Project/Solution**. In the **New Project** dialog, select the **Templates | C#** node from the left pane, and then select the **Console Application** template.
 
