@@ -22,7 +22,8 @@ In this hands-on lab you will learn how you can use Visual Studio 2012 and Windo
 ### Prerequisites ###
 
 - Windows Azure subscription - [sign up for a free trial](http://aka.ms/WATK-FreeTrial)
-- [Visual Studio Express 2012 for Windows 8](http://www.microsoft.com/visualstudio) or higher
+- [Visual Studio Express 2012 for Desktop](http://www.microsoft.com/visualstudio) or higher
+- [Visual Studio Express 2012 for Windows 8](http://www.microsoft.com/en-us/download/details.aspx?id=30664) or higher
 
 <a name="Exercises" />
 ## Exercises ##
@@ -162,9 +163,9 @@ In this exercise, you will create a new console application that allows you to p
 <a name="programmatically-uploading-a-mp4-video" />
 ### Task 1 - Programmatically Uploading a Mp4 video ###
 
-1. Open **Microsoft Visual Studio 2012 Express for Windows 8** (or higher) in elevated administrator mode. If the **User Account Control** dialog appears, click **Yes**.
+1. Open **Microsoft Visual Studio 2012 Express for Desktop** (or higher) in elevated administrator mode. If the **User Account Control** dialog appears, click **Yes**.
 
-1. In the **File** menu, choose **New project** and then **Project/Solution**. In the **New Project** dialog, select the **Templates | C#** node from the left pane, and then select the **Console Application** template.
+1. In the **File** menu, choose **New project** and select the **Templates | C#** node from the left pane, and then select the **Console Application** template.
 
 1. Enter _MyMediaServicesManager_ as the project **Name**, choose a desired **Location**, and click **Ok**.
 
@@ -479,12 +480,10 @@ In this exercise you will add advertisements support to  monetize your applicati
 
 Scheduling is the first step to play ads in the player framework. This allows your app to tell the player framework when to play each ad. Ad scheduling is separate from the ad handling (playing the ad) and is independent of the type of ad you want to play.
 
-One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlist). [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap) is an IAB recommended xml schema that defines when ads should play for a given piece of content. The player framework includes a VMAP scheduler plugin that will download, parse and consume to control the timing of ads for you.
+One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlist). VMAP is an xml schema that defines when ads should play for a given piece of content. The player framework includes a VMAP scheduler plugin that will download, parse and consume to control the timing of ads for you.
 
 <a name="adding-advertisements-using-a-vmap-file-to-a-windows8-video-app" />
 ### Task 1 - Adding advertisements using a VMAP file to a Windows 8 video app ###
-
-<INTRO TASK>
 
 1. Start **Visual Studio Express 2012 for Windows 8** and open the **Begin** solution located at **Source\Ex4-Advertising\Begin**.
 
@@ -604,8 +603,6 @@ In this task you will add an already pre-configured VMAP file to the local asset
 	**TrackingEvents:** Its used to track the start and end of an ad break and whether an error occurred during the ad break.
 
 	> **Note:** The media files used in the provided VMAP file are videos already uploaded to a blob storage. Their URIs can be found inside the MediaFile elements of the vmap.xml file.
-
-	For more information regarding VMAP, you can check the official [documentation](http://www.iab.net/media/file/VMAPv1.0.pdf).
 
 1. Press **F5** to start the app. Notice that the advertisement is played in the video player according to the information provided in the VMAP file. When it ends, you should see the main content video starting.
 
