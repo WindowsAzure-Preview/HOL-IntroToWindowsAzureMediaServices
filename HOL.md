@@ -590,17 +590,17 @@ In this task you will add an already pre-configured VMAP file to the local asset
 	</vmap:VMAP>
 	````
 
-	The **Video Multiple Ad Playlist (VMAP)** specification is an XML template that video content owners can use to describe the structure for ad inventory insertion when they don’t control the video player or the content distribution outlet. VMAP represents a playlist structure that wraps one or more ad responses. This structure defines the ad breaks within a video program, identifying details such as how many ad breaks, which ad types to display, and when each ad break should occur. VMAP cannot provide ads directly. Instead, a VMAP response must contain separate ad responses that define which ads to display. While any ad response format can be used, VMAP was designed to accept VAST ad responses.
+	The VMAP standard is used by content owners to describe ad breaks, such as the timing for each break, the number of ads available and which types should be supported. VMAP is very useful when content owners don't have control over the video player.
 
 	**VMAP elements**
 
-	**AdBreak:** A location or point in time where one or more ads may be scheduled for delivery.
-	
-	**AdSource:** Identifies the ads to be displayed in an ad break, either with an ad response inline or by referencing an ad response in another system.
-	
-	**VASTData:** A container for all the Ads to be displayed according to the AdBreak. Here is where the media files are referenced.
-	
-	**TrackingEvents:** Its used to track the start and end of an ad break and whether an error occurred during the ad break.
+	**AdBreak:** it’s used to specify at which moment an ad should be played, meaning at the beginning of the video, at the end, at some played percentage or at which specific hours/minutes/seconds.
+
+	**AdSource:** it’s used to specify which ads should be displayed in an ad break.
+
+	**VASTData:** it specifies the video player what to play. All the ads that will be displayed should be inside this container.
+
+	**TrackingEvents:** it’s used to track the start and end of an ad break and whether an error occurred during the ad break.
 
 	> **Note:** The media files used in the provided VMAP file are videos already uploaded to a blob storage. Their URIs can be found inside the MediaFile elements of the vmap.xml file.
 
