@@ -10,8 +10,7 @@
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
 
-        <PlayerFramework:MediaPlayer x:Name="videoPlayer"
-                                     HorizontalAlignment="Left"
+        <PlayerFramework:MediaPlayer HorizontalAlignment="Left"
                                      Height="600"
                                      Margin="200,96,0,0"
                                      VerticalAlignment="Top"

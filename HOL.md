@@ -379,7 +379,7 @@ In this task you will download and install the latest version of the Microsoft M
 <a name="adding-a-video-player-control-to-a-windows8-app" />
 ### Task 2 - Adding a video player control to a Windows 8 app ###
 
-In this task you will create a new C# Store app from scratch and add video control linked to a smooth streaming video uploaded to Windows Azure Media Services.
+In this task you will create a new store app from scratch and add video control linked to a smooth streaming video uploaded to Windows Azure Media Services.
 
 1. Download and install the [Visual Studio Extension SDK for the Smooth Streaming Client] (http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6).
 
@@ -389,49 +389,80 @@ In this task you will create a new C# Store app from scratch and add video contr
 
     _Creating a New Project_
 
-1. In the **New Project** dialog, select **Blank App (XAML)** under the **Visual C# | Windows Store** tab. Name it _SampleMediaPlayer_, choose a location and click **OK**.
+1. In the **New Project** dialog, expand the language tab of your preference (Visual C# or JavaScript), select **Windows Store** and choose the **Blank App** template. Name it _SampleMediaPlayer_, choose a location and click **OK**.
 
-	![New C# Store App](Images/new-store-blank-app.png?raw=true "New C# Store App")
+	![New C# Store App](Images/new-cs-store-blank-app.png?raw=true "New C# Store App")
 
     _New C# Store App_
 
-	
-	![New Store App Solution Explorer](Images/new-store-app-solution-explorer.png?raw=true "New Store App Solution Explorer")
+	![New JavaScript Store App](Images/new-js-store-blank-app.png?raw=true "New JavaScript Store App")
 
-    _New Store App Solution Explorer_
+    _New JavaScript Store App_
 
-1. Add **Microsoft Player Framework Adaptive Streaming Plugin**, **Microsoft Smooth Streaming Client SDK for Windows 8**, and **Microsoft Visual C++ Runtime Package** to your project References. To do this, right-click the project, click **Add Reference**. In the **Reference Manager**, select the aforementioned references that are located under **Windows | Extensions** and click **OK**.
+1. Add **Microsoft Player Framework**, **Microsoft Player Framework Adaptive Streaming Plugin**, **Microsoft Smooth Streaming Client SDK for Windows 8**, and **Microsoft Visual C++ Runtime Package** to your project references. To do this, right-click the project and click **Add Reference**. In the **Reference Manager**, select the aforementioned references that are located under **Windows | Extensions** and click **OK**.
 
-	![Smooth Streaming references](Images/smooth-streaming-references.png?raw=true "Smooth Streaming references")
+	![Smooth Streaming C# References](Images/smooth-streaming-cs-references.png?raw=true "Smooth Streaming C# References")
 
-    _Smooth Streaming references_
+    _Smooth Streaming C# References_
 
-1. Open **MainPage.xaml** to open the markup code for the main page of the app.
+	![Smooth Streaming JavaScript References](Images/smooth-streaming-js-references.png?raw=true "Smooth Streaming JavaScript References")
 
-1. At the top of the file, add the following XML namespace reference.
+    _Smooth Streaming JavaScript References_
+
+1. Open **MainPage.xaml** (for the C# project) or **default.html** (for the JavaScript project) to open the markup code for the main page of the app.
+
+1. Add the following namespace references at the top of the **MainPage.xaml** file (for the C# project) or at the end of the head section in the **default.html** file (for the JavaScript project).
+
+	C#
 
 	````XML
+	xmlns:PlayerFramework="using:Microsoft.PlayerFramework"
 	xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
 	````
 
-1. Open the toolbox at the left corner of the screen and extend the **Common XAML Controls** section. Drag and drop the **MediaPlayer** control into the designer. Notice the markup code generated in the xaml file for this control.
+	JavaScript
+
+	````JavaScript
+	<!-- PlayerFramework references -->
+	<link href="/Microsoft.PlayerFramework.Js/css/PlayerFramework-dark.css" rel="stylesheet">
+	<script src="/Microsoft.PlayerFramework.Js/js/PlayerFramework.js"></script>
+
+	<!-- PlayerFramework.Adaptive references -->
+	<script src="/Microsoft.PlayerFramework.Js.Adaptive/js/PlayerFramework.Adaptive.js"></script>
+	````
+
+1. Now you will add a video player control in the **MainPage.xaml** (for the C# project) or in the **default.html** (for the JavaScript project). 
+
+	For C#, open the toolbox at the left corner of the screen and extend the **Common XAML Controls** section. Drag and drop the **MediaPlayer** control into the designer. Notice the markup code generated in the xaml file for this control.
 
 	> **Note:** You may adjust the height and width of the control to values of your choice.
 
-	![Media Player control](Images/media-player-control.png?raw=true "Media Player control")
+	![Media Player control](Images/media-player-control-cs.png?raw=true "Media Player control")
 
-    _Media Player control_
+    _Media Player Control C#_
 
-	![Generated Code for Media Player Control](Images/generated-code-for-media-player-control.png?raw=true "Generated Code for Media Player Control")
+	For JavaScript, replace the content of the body section with the following highlighted code.
+	
+	<!-- mark:2-8 -->
+	````HTML
+	<body>
+		<div data-win-control="PlayerFramework.MediaPlayer" 
+			data-win-options="{                                 
+							  width: 1000,
+							  height: 600,
+							  autoplay: true,
+					  }">
+		</div>
+	</body>
+	````
 
-    _Generated Code for Media Player Control_
+1. In the media player control, add the **Source** property (for the C# version) or the **src** property (for the JavaScript version) as shown in the following code. Replace the _[YOUR-MEDIA-SERVICE-VIDEO-URL]_ placeholder with the URL of the video encoded in smooth streaming at the end of exercise 2.
 
-1. In the MediaPlayer element of the **MainPage.xaml** file, add the **x:Name** property with the value _videoPlayer_, and add the **Source** property, pointing to the URL of the video encoded in smooth streaming at the end of exercise 2.
+	C#
 
-	<!-- mark:2,6 -->
+	<!-- mark:5 -->
 	````XML
 	<PlayerFramework:MediaPlayer
-		x:Name="videoPlayer"
 		HorizontalAlignment="Left"
 		Height="600" Margin="200,96,0,0"
 		VerticalAlignment="Top" Width="1000"
@@ -439,12 +470,25 @@ In this task you will create a new C# Store app from scratch and add video contr
 	/>
 	````
 
-1. Modify the MediaPlayer control Xaml to add the Adaptive plugin to the plugins collection on the player framework, as shown in the following code.
+	JavaScript
 
-	<!--mark:8-12-->
+	<!-- mark:6 -->
+	````HTML
+	<div data-win-control="PlayerFramework.MediaPlayer" 
+		data-win-options="{                                 
+						  width: 1000,
+						  height: 600,
+						  autoplay: true,
+						  src: '[YOUR-MEDIA-SERVICE-VIDEO-URL]',
+				  }">
+	</div>
+	````
+
+1. In the **MainPage.xaml** file of the C# version, modify the MediaPlayer control Xaml to add the Adaptive plugin to the plugins collection on the player framework, as shown in the following code.
+
+	<!--mark:7-11-->
 	````XML
-	<PlayerFramework:MediaPlayer x:Name="videoPlayer"
-                                HorizontalAlignment="Left"
+	<PlayerFramework:MediaPlayer HorizontalAlignment="Left"
                                 Height="600"
                                 Margin="200,96,0,0"
                                 VerticalAlignment="Top"
