@@ -422,7 +422,7 @@ In this task you will create a new store app from scratch and add video control 
 
 	JavaScript
 
-	````JavaScript
+	````HTML
 	<!-- PlayerFramework references -->
 	<link href="/Microsoft.PlayerFramework.Js/css/PlayerFramework-dark.css" rel="stylesheet">
 	<script src="/Microsoft.PlayerFramework.Js/js/PlayerFramework.js"></script>
@@ -529,46 +529,80 @@ One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlis
 <a name="adding-advertisements-using-a-vmap-file-to-a-windows8-video-app" />
 ### Task 1 - Adding advertisements using a VMAP file to a Windows 8 video app ###
 
-1. Start **Visual Studio Express 2012 for Windows 8** and open the **Begin** solution located at **Source\Ex4-Advertising\Begin**.
+In this task, you will add advertising support to the media player control of the app using the vmap scheduler plugin.
+
+1. If not already open, start **Visual Studio Express 2012 for Windows 8** and select **Open Project...** from the Start Page. In the **Open Project** dialog, browse to **Ex4-Advertising\Begin** in the **Source** folder of the lab, select **Begin.sln** in the folder for the language of your preference (C# or JavaScript) and click **Open**. Alternatively, you may continue with the solution that you obtained after completing the previous exercise.
 
 1. Add a reference to the _Microsoft Player Framework Advertising Plugin_. To do this, right-click the **References** folder and select **Add Reference**. Under **Windows | Extensions**, check **Microsoft Player Framework Advertising Plugin** and click **OK**.
 
-	![Adding reference to the Advertising Plugin](Images/adding-reference-to-advertising-plugin.png?raw=true "Adding reference to the Advertising Plugin")
+	![Adding reference to the Advertising Plugin C#](Images/adding-reference-to-advertising-plugin-cs.png?raw=true "Adding reference to the Advertising Plugin C#")
 
-    _Adding reference to the Advertising Plugin_
+    _Adding reference to the Advertising Plugin C#_
 
-1. Open **MainPage.xaml** and add the following namespace for the Microsoft Player Framework Advertising Plugin.
+	![Adding reference to the Advertising Plugin JavaScript](Images/adding-reference-to-advertising-plugin-js.png?raw=true "Adding reference to the Advertising Plugin JavaScript")
+
+    _Adding reference to the Advertising Plugin JavaScript_
+
+1. Add the following namespace reference for the _Microsoft Player Framework Advertising Plugin_ at the top of the **MainPage.xaml** file (for the C# project) or at the end of the head section in the **default.html** file (for the JavaScript project).
+
+	C#
 
 	````XML
 	xmlns:ads="using:Microsoft.PlayerFramework.Advertising"
 	````
 
-1. Change the **Source** property of the **MediaPlayer** control to point to the URL of the video encoded in smooth streaming at the end of exercise 2. The resulting code will be similar to the following.
-	<!-- mark:7 -->
+	JavaScript
+
+	````HTML
+	<!-- PlayerFramework Advertising references -->
+	<link href="/Microsoft.PlayerFramework.Js.Advertising/css/PlayerFramework.Advertising.css" rel="stylesheet">
+	<script src="/Microsoft.PlayerFramework.Js.Advertising/js/PlayerFramework.Advertising.js"></script>
+	````
+
+1. In the media player control, change the **Source** property (for the C# version) or the **src** property (for the JavaScript version) to point to the URL of the video encoded in smooth streaming at the end of exercise 2.
+
+	C#
+
+	<!-- mark:6 -->
 	````XML
-    <PlayerFramework:MediaPlayer x:Name="videoPlayer"
-                                    HorizontalAlignment="Left"
-                                    Height="600"
-                                    Margin="200,96,0,0"
-                                    VerticalAlignment="Top"
-                                    Width="1000"
-                                    Source="[YOUR-MEDIA-SERVICE-VIDEO-URL]">
+    <PlayerFramework:MediaPlayer HorizontalAlignment="Left"
+								Height="600"
+								Margin="200,96,0,0"
+								VerticalAlignment="Top"
+								Width="1000"
+								Source="[YOUR-MEDIA-SERVICE-VIDEO-URL]">
         <PlayerFramework:MediaPlayer.Plugins>
             <adaptive:AdaptivePlugin />
         </PlayerFramework:MediaPlayer.Plugins>
     </PlayerFramework:MediaPlayer>
 	````
 
-1. Now you will add a new **VmapSchedulerPlugin** plugin to the MediaPlayer that you added in the previous exercise pointing to a _vmap.xml_ file that you will add to the local assets folder of the project in the next task. To do this, replace the _PlayerFramework:MediaPlayer_ element with the following code.
-	<!-- mark:10-11 -->
+	JavaScript
+
+	<!-- mark:6 -->
+	````HTML
+	<div data-win-control="PlayerFramework.MediaPlayer" 
+		data-win-options="{                                 
+						  width: 1000,
+						  height: 600,
+						  autoplay: true,
+						  src: '[YOUR-MEDIA-SERVICE-VIDEO-URL]',
+				  }">
+	</div>
+	````
+
+1. Now you will add a new **VmapSchedulerPlugin** plugin to the media player that you added in the previous exercise pointing to a _vmap.xml_ file that you will add to the local assets folder of the project in the next task. To do this, update the media player control with the following code.
+
+	C#
+
+	<!-- mark:9-10 -->
 	````XML
-	<PlayerFramework:MediaPlayer x:Name="videoPlayer"
-                                    HorizontalAlignment="Left"
-                                    Height="600"
-                                    Margin="200,96,0,0"
-                                    VerticalAlignment="Top"
-                                    Width="1000"
-                                    Source="[YOUR-MEDIA-SERVICE-VIDEO-URL]">
+	<PlayerFramework:MediaPlayer HorizontalAlignment="Left"
+								Height="600"
+								Margin="200,96,0,0"
+								VerticalAlignment="Top"
+								Width="1000"
+								Source="[YOUR-MEDIA-SERVICE-VIDEO-URL]">
 		<PlayerFramework:MediaPlayer.Plugins>
 			<adaptive:AdaptivePlugin />
 			<ads:VmapSchedulerPlugin Source="ms-appx:///Assets/vmap.xml" />
@@ -577,12 +611,31 @@ One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlis
 	</PlayerFramework:MediaPlayer>
 	````
 
+	JavaScript
+
+	<!-- mark:7-9 -->
+	````HTML
+	<div data-win-control="PlayerFramework.MediaPlayer" 
+         data-win-options="{                                 
+                                width: 1000,
+                                height: 600,
+                                autoplay: true,
+                                src: '[YOUR-MEDIA-SERVICE-VIDEO-URL]',
+                                vmapSchedulerPlugin: {
+                                    source: 'ms-appx:///Assets/vmap.xml'
+                                }
+                          }">
+    </div>
+	````
+
 <a name="exploring-vmap-file-and-running-app" />
 ### Task 2 - Exploring the VMAP file and running the app ###
 
 In this task you will add an already pre-configured VMAP file to the local assets folder of the application and explore its main content. Finally, you will run the application to check that the advertisements are displayed at the beginning of the video.
 
 1. In Solution Explorer, right-click the **Assets** folder of the SampleMediaPlayer project and select **Add | Existing Item**. Browse to the **Source/Assets** folder of this lab, select the _vmap.xml_ file and click **Add**.
+
+	> **Note:** For the JavaScript version, you will have to manually create the Assets folder in the project. To do this, right-click the **SampleMediaPlayer** project, select **Add | New Folder** and name it _Assets_.
 
 	![Importing the VMAP file](Images/importing-the-vmap-file.png?raw=true "Importing the VMAP file")
 
@@ -600,7 +653,12 @@ In this task you will add an already pre-configured VMAP file to the local asset
 				  <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
 					 <Ad id="115571748">
 						<InLine>
-						  ...
+						  <AdSystem version="2.0 alpha">Atlas</AdSystem>
+						  <AdTitle>Unknown</AdTitle>
+						  <Description>Unknown</Description>
+						  <Survey></Survey>
+						  <Error></Error>
+						  <Impression id="Atlas"><![CDATA[http://view.atdmt.com/000/sview/115571748/direct;ai.201582527;vt.2/01/634364885739970673]]></Impression>
 						  <Creatives>
 							 <Creative id="video" sequence="0" AdID="">
 								<Linear>
@@ -610,13 +668,13 @@ In this task you will add an already pre-configured VMAP file to the local asset
 										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
 									 </MediaFile>
 									 <MediaFile apiFramework="Windows Media" id="windows_progressive_300" maintainAspectRatio="true" scaleable="true"  delivery="progressive" bitrate="300" width="400" height="300" type="video/x-ms-wmv">
-										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
+										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_2_000_300_4x3.wmv]]>
 									 </MediaFile>
 									 <MediaFile apiFramework="Windows Media" id="windows_progressive_500" maintainAspectRatio="true" scaleable="true"  delivery="progressive" bitrate="500" width="400" height="300" type="video/x-ms-wmv">
-										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
+										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_500_4x3.wmv]]>
 									 </MediaFile>
 									 <MediaFile apiFramework="Windows Media" id="windows_progressive_700" maintainAspectRatio="true" scaleable="true" delivery="progressive" bitrate="700" width="400" height="300" type="video/x-ms-wmv">
-										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
+										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_2_000_700_4x3.wmv]]>
 									 </MediaFile>
 								  </MediaFiles>
 								</Linear>
@@ -627,9 +685,11 @@ In this task you will add an already pre-configured VMAP file to the local asset
 				  </VAST>
 				</vmap:VASTData>
 			</vmap:AdSource>
-		<vmap:TrackingEvents>
-		...
-		</vmap:TrackingEvents>
+			<vmap:TrackingEvents>
+				<vmap:Tracking event="breakStart">
+				  http://MyServer.com/breakstart.gif
+				</vmap:Tracking>
+			</vmap:TrackingEvents>
 		</vmap:AdBreak>
 	</vmap:VMAP>
 	````
