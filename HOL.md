@@ -72,56 +72,49 @@ The **media services** page opens with the new account displayed. When the statu
 
 	_The recently created Media Service_
 
-<a name="managing-content-in-media-services" />
-### Task 2 - Managing Content in Media Services ###
+<a name="uploading-content-to-media-services" />
+### Task 2 - Uploading content to Media Services ###
 
-The Windows Azure Media Services content view allows you to manage media content for your Media Services account.
-Currently you can perform the following content operations directly from the portal:
+In this task you will upload content to the already created media service using the Windows Azure Management Portal.
 
-- View content information like published state, published URL, size, and datetime of last update 
-- Upload new content 
-- Encode content 
-- Play content video 
-- Publish/Unpublish content 
-- Delete content
+1. In the [Management Portal](http://go.microsoft.com/fwlink/?linkid=256666&clcid=0x409), click **Media Services** and then click the name of the media service created in the previous task.
 
-In this task you will upload, encode and publish media content from the portal.
-
-**Uploading content**
-
-1. In the [Management Portal](http://go.microsoft.com/fwlink/?linkid=256666&clcid=0x409), click **Media Services** and then click the Media Services account name.
-
-1. Click the **Content** view at the top of the page. Your view should look similar to the following screen shot.
+1. Click the **Content** view at the top of the page and then click **Upload** at the bottom toolbar. Your view should look similar to the following screenshot.
 
 	![Uploading Content](Images/uploading-content.png?raw=true "Uploading Content")
 
 	_Uploading Content_
- 
-1. Click the **Upload** button at the bottom of the portal. 
 
 1. In the **Upload Content** dialog, click **Browse Your Computer** and browse to the desired asset file. Click the file and then click **Open** or press **Enter**.
 
 	>**Note:** You can use the following short video to try uploading content to Media Services: [Azure_Intro.mp4](http://dpeshare.blob.core.windows.net/mediaserviceslabassets/Azure_Intro.mp4)
  
-1. In the **Upload Content** dialog, click the check button to accept the File and Content Name.
+1. In the **Upload Content** dialog, click the check button to submit the file and content name.
 
 	![Upload Content dialog](Images/upload-content-dialog.png?raw=true "Upload Content dialog")
 
 	_Upload Content dialog_
 
-1. The upload will start and you can track progress from the bottom of the portal. 
+1. The upload will start and you can track progress at the bottom toolbar of the portal. 
  
 	![Uploading progress](Images/uploading-progress.png?raw=true "Uploading progress")
 
 	_Uploading progress_
 
-	Once the upload has completed, you will see the new asset listed in the Content list. By convention the name will have **-Source** appended at the end to help track new content as source content for encoding tasks.
+	Once the upload is complete, you will see the new asset listed in the _Content_ list. By convention, the name will have **-Source** appended at the end to help track new content as source content for encoding tasks.
 
-	If the file size value does not get updated after the uploading process stops, press the Sync Metadata button. This synchronizes the asset file size with the actual file size in storage and refreshes the value on the Content page. 
+	If the file size value does not get updated after the uploading process finishes, press the **Sync Metadata** button. This synchronizes the asset file size with the actual file size in storage and refreshes the value on the _Content_ page. 
 
-**Encoding content**
+<a name="uploading-content-to-media-services" />
+### Task 3 - Encoding content in Media Services ###
 
-1. Click on the desired source video, in this case the one that you have just uploaded, and then click **Encode** at the bottom of the page.
+In this task you will encode an already uploaded video in the Windows Azure Management Portal.
+
+1. Click on the desired source video, in this case the one that you have just uploaded, and then click **Encode** at the bottom toolbar.
+
+	![Encode Button](Images/encode-button.png?raw=true "Encode Button")
+
+	_Encode Button_
 
 1. In the **Windows Azure Media Encoder** dialog, choose from one of the common or advanced encoding presets. For this task purposes, choose **Playback via HTML5 (IE/Chrome/Safari)**. More information about the presets:
 
@@ -145,13 +138,26 @@ In this task you will upload, encode and publish media content from the portal.
 
 1. In the **Windows Azure Media Encoder** dialog, enter the desired friendly output content name or accept the default. Then click the check button to start the encoding operation and you can track progress from the bottom of the portal.
 
-**Publishing content**
+	![Encoding media in Windows Azure](Images/encoding-media-in-windows-azure.png?raw=true "Encoding media in Windows Azure")
 
-1. Click an asset which is not published, in this case, the video that was just encoded. Then click the **Publish** button to publish to a public URL. Once the content is published to a URL, the URL can be opened by a client player capable of rendering the encoded content.
+	_Encoding media in Windows Azure_
 
-**Playing content from the portal**
- 
-1. Click the published video content and click the **Play** button at the bottom of the portal. Only content that has been published is playable from the portal. Also, the encoding must be supported by your browser.
+<a name="uploading-content-to-media-services" />
+### Task 4 - Publishing and Playing content in Media Services ###
+
+In this task, you will publish the already encoded video and play it directly in the Windows Azure Management Portal.
+
+1. Click an asset which is not published, in this case, the video that was just encoded. Then click the **Publish** button at the bottom toolbar to publish the encoded video to a public URL. Once the content is published to a URL, the URL can be opened by a client player capable of rendering the encoded content.
+
+	![Publishing media in Windows Azure](Images/publish-button.png?raw=true "Publishing media in Windows Azure")
+
+	_Publishing media in Windows Azure_
+
+1. Once the publishing process finishes, select the video and click the **Play** button at the bottom toolbar. Only content that has been published is playable from the portal. Also, the encoding must be supported by your browser.
+
+	![Playing media in Windows Azure](Images/playing-media.png?raw=true "Playing media in Windows Azure")
+
+	_Playing media in Windows Azure_
 
 ---
 
@@ -182,6 +188,8 @@ In this exercise, you will create a new console application that allows you to p
 
 1. Paste the following code in the _Program.cs_ file, inside the **Main** method. This code prompts the user about the different steps that the final app will perform, and will aid you in completing the exercise.
 
+	(Code Snippet - _Intro to Media Services - Ex2 - Console Logs_)
+
 	````C#
 	Console.WriteLine("Uploading Video");
             
@@ -204,6 +212,8 @@ In this exercise, you will create a new console application that allows you to p
 	_Programmatically uploading a video_
 
 1. Copy the code snippet shown in the portal and paste it in inside the **Main** method, between the lines that notify about the uploading process. The resulting code will be similar to the following one.
+
+	(Code Snippet - _Intro to Media Services - Ex2 - Upload Video_)
 
 	<!-- mark:5-9 -->
 	````C#
@@ -242,6 +252,8 @@ In this exercise, you will create a new console application that allows you to p
 	````
 
 1. Add the following code between the WriteLine blocks that notify about the initiation and termination of the encoding operation.
+
+	(Code Snippet - _Intro to Media Services - Ex2 - Encode Video in Smooth Streaming_)
 
 	<!-- mark:3-26 -->
 	````C#
@@ -283,6 +295,8 @@ In this exercise, you will create a new console application that allows you to p
 ### Task 3 - Programmatically Delivering and Streaming a Mp4 video ###
 
 1. Add the following code between the WriteLine blocks that notify about the initiation and termination of the publishing operation.
+
+	(Code Snippet - _Intro to Media Services - Ex2 - Streaming MP4 Video_)
 
 	<!-- mark:3-32 -->
 	````C#
@@ -415,7 +429,7 @@ In this task you will create a new store app from scratch and add video control 
 
 	C#
 
-	````XML
+	````XAML
 	xmlns:PlayerFramework="using:Microsoft.PlayerFramework"
 	xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
 	````
@@ -461,7 +475,7 @@ In this task you will create a new store app from scratch and add video control 
 	C#
 
 	<!-- mark:5 -->
-	````XML
+	````XAML
 	<PlayerFramework:MediaPlayer
 		HorizontalAlignment="Left"
 		Height="600" Margin="200,96,0,0"
@@ -487,7 +501,7 @@ In this task you will create a new store app from scratch and add video control 
 1. In the **MainPage.xaml** file of the C# version, modify the MediaPlayer control Xaml to add the Adaptive plugin to the plugins collection on the player framework, as shown in the following code.
 
 	<!--mark:7-11-->
-	````XML
+	````XAML
 	<PlayerFramework:MediaPlayer HorizontalAlignment="Left"
                                 Height="600"
                                 Margin="200,96,0,0"
@@ -547,7 +561,7 @@ In this task, you will add advertising support to the media player control of th
 
 	C#
 
-	````XML
+	````XAML
 	xmlns:ads="using:Microsoft.PlayerFramework.Advertising"
 	````
 
@@ -564,7 +578,7 @@ In this task, you will add advertising support to the media player control of th
 	C#
 
 	<!-- mark:6 -->
-	````XML
+	````XAML
     <PlayerFramework:MediaPlayer HorizontalAlignment="Left"
 								Height="600"
 								Margin="200,96,0,0"
@@ -596,7 +610,7 @@ In this task, you will add advertising support to the media player control of th
 	C#
 
 	<!-- mark:9-10 -->
-	````XML
+	````XAML
 	<PlayerFramework:MediaPlayer HorizontalAlignment="Left"
 								Height="600"
 								Margin="200,96,0,0"

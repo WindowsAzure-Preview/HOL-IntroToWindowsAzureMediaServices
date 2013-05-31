@@ -15,4 +15,10 @@
             disableSkip="false"
             type="Registry" />
     </dependencies>
+	<setupCommands>
+		<setup 
+			command="setup.cmd" 
+			name="Setup Script" 
+			description="Executing setup scripts..." />
+	</setupCommands>
 </DependencyCheckerConfiguration>
