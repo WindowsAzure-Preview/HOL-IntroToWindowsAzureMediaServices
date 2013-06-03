@@ -242,6 +242,24 @@ In this exercise, you will create a new console application that allows you to p
 
 1. Update the code you just pasted to point to the video that you want to upload, by replacing the _YOUR FILE PATH_ string. It could be the same video used in the previous exercise. If you are going to do that it is recommended that you rename the video to differentiate it from the one uploaded in the first exercise of this lab.
 
+1. Go to your Media Service dashboard in the Management Portal and click **Manage Keys** button from the bottom toolbar.
+
+	![Manage Media Service Keys](images/manage-media-service-keys.png?raw=true)
+
+	_Managing Media Service Keys_
+
+1.	In the dialog box, copy the **Primary Media Service Access Key**.
+
+	![Copying Primary Media Service Key](images/copying-primary-media-service-key.png?raw=true)
+
+	_Copying Media Service Primary Key_
+
+1.	Replace the key you copied in previous step in the second parameter when instantiating a **CloudMediaContext** class.
+
+	````C#
+	var context = new CloudMediaContext("[YOUR-MEDIA-SERVICE-ACCOUNT-NAME]", "[YOUR-MEDIA-SERVICE-ACCOUNT-KEY]"); 
+	````
+
 <a name="programmatically-encoding-a-mp4-video" />
 ### Task 2 - Programmatically Encoding a Mp4 video using Smooth Streaming ###
 
