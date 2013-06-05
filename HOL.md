@@ -244,13 +244,13 @@ In this exercise, you will create a new console application that allows you to p
 
 1. Go to your Media Service dashboard in the Management Portal and click **Manage Keys** button from the bottom toolbar.
 
-	![Manage Media Service Keys](images/manage-media-service-keys.png?raw=true)
+	![Manage Media Service Keys](Images/manage-media-service-keys.png?raw=true)
 
 	_Managing Media Service Keys_
 
 1.	In the dialog box, copy the **Primary Media Service Access Key**.
 
-	![Copying Primary Media Service Key](images/copying-primary-media-service-key.png?raw=true)
+	![Copying Primary Media Service Key](Images/copying-primary-media-service-key.png?raw=true)
 
 	_Copying Media Service Primary Key_
 
