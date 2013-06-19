@@ -563,7 +563,7 @@ One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlis
 
 In this task, you will add advertising support to the media player control of the app using the vmap scheduler plugin.
 
-1. If not already open, start **Visual Studio Express 2012 for Windows 8** and select **Open Project...** from the Start Page. In the **Open Project** dialog, browse to **Ex4-Advertising\Begin** in the **Source** folder of the lab, select **Begin.sln** in the folder for the language of your preference (C# or JavaScript) and click **Open**. Alternatively, you may continue with the solution that you obtained after completing the previous exercise.
+1. If not already open, start **Visual Studio Express 2012 for Windows 8** and select **Open Project...** from the Start Page. In the **Open Project** dialog, browse to **Ex4-Advertising** in the **Source** folder of the lab, select **Begin\Begin.sln** in the folder for the language of your preference (C# or JavaScript) and click **Open**. Alternatively, you may continue with the solution that you obtained after completing the previous exercise.
 
 1. Add a reference to the _Microsoft Player Framework Advertising Plugin_. To do this, right-click the **References** folder and select **Add Reference**. Under **Windows | Extensions**, check **Microsoft Player Framework Advertising Plugin** and click **OK**.
 
