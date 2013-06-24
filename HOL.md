@@ -105,7 +105,7 @@ In this task you will upload content to the already created media service using 
 
 	If the file size value does not get updated after the uploading process finishes, press the **Sync Metadata** button. This synchronizes the asset file size with the actual file size in storage and refreshes the value on the _Content_ page. 
 
-<a name="uploading-content-to-media-services" />
+<a name="encoding-content-in-media-services" />
 ### Task 3 - Encoding content in Media Services ###
 
 In this task you will encode an already uploaded video in the Windows Azure Management Portal.
@@ -142,7 +142,7 @@ In this task you will encode an already uploaded video in the Windows Azure Mana
 
 	_Encoding media in Windows Azure_
 
-<a name="uploading-content-to-media-services" />
+<a name="publishing-and-playing-content" />
 ### Task 4 - Publishing and Playing content in Media Services ###
 
 In this task, you will publish the already encoded video and play it directly in the Windows Azure Management Portal.
