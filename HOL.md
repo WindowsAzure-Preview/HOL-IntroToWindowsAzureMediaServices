@@ -72,56 +72,49 @@ The **media services** page opens with the new account displayed. When the statu
 
 	_The recently created Media Service_
 
-<a name="managing-content-in-media-services" />
-### Task 2 - Managing Content in Media Services ###
+<a name="uploading-content-to-media-services" />
+### Task 2 - Uploading content to Media Services ###
 
-The Windows Azure Media Services content view allows you to manage media content for your Media Services account.
-Currently you can perform the following content operations directly from the portal:
+In this task you will upload content to the already created media service using the Windows Azure Management Portal.
 
-- View content information like published state, published URL, size, and datetime of last update 
-- Upload new content 
-- Encode content 
-- Play content video 
-- Publish/Unpublish content 
-- Delete content
+1. In the [Management Portal](http://go.microsoft.com/fwlink/?linkid=256666&clcid=0x409), click **Media Services** and then click the name of the media service created in the previous task.
 
-In this task you will upload, encode and publish media content from the portal.
-
-**Uploading content**
-
-1. In the [Management Portal](http://go.microsoft.com/fwlink/?linkid=256666&clcid=0x409), click **Media Services** and then click the Media Services account name.
-
-1. Click the **Content** view at the top of the page. Your view should look similar to the following screen shot.
+1. Click the **Content** view at the top of the page and then click **Upload** at the bottom toolbar. Your view should look similar to the following screenshot.
 
 	![Uploading Content](Images/uploading-content.png?raw=true "Uploading Content")
 
 	_Uploading Content_
- 
-1. Click the **Upload** button at the bottom of the portal. 
 
 1. In the **Upload Content** dialog, click **Browse Your Computer** and browse to the desired asset file. Click the file and then click **Open** or press **Enter**.
 
 	>**Note:** You can use the following short video to try uploading content to Media Services: [Azure_Intro.mp4](http://dpeshare.blob.core.windows.net/mediaserviceslabassets/Azure_Intro.mp4)
  
-1. In the **Upload Content** dialog, click the check button to accept the File and Content Name.
+1. In the **Upload Content** dialog, click the check button to submit the file and content name.
 
 	![Upload Content dialog](Images/upload-content-dialog.png?raw=true "Upload Content dialog")
 
 	_Upload Content dialog_
 
-1. The upload will start and you can track progress from the bottom of the portal. 
+1. The upload will start and you can track progress at the bottom toolbar of the portal. 
  
 	![Uploading progress](Images/uploading-progress.png?raw=true "Uploading progress")
 
 	_Uploading progress_
 
-	Once the upload has completed, you will see the new asset listed in the Content list. By convention the name will have **-Source** appended at the end to help track new content as source content for encoding tasks.
+	Once the upload is complete, you will see the new asset listed in the _Content_ list. By convention, the name will have **-Source** appended at the end to help track new content as source content for encoding tasks.
 
-	If the file size value does not get updated after the uploading process stops, press the Sync Metadata button. This synchronizes the asset file size with the actual file size in storage and refreshes the value on the Content page. 
+	If the file size value does not get updated after the uploading process finishes, press the **Sync Metadata** button. This synchronizes the asset file size with the actual file size in storage and refreshes the value on the _Content_ page. 
 
-**Encoding content**
+<a name="encoding-content-in-media-services" />
+### Task 3 - Encoding content in Media Services ###
 
-1. Click on the desired source video, in this case the one that you have just uploaded, and then click **Encode** at the bottom of the page.
+In this task you will encode an already uploaded video in the Windows Azure Management Portal.
+
+1. Click on the desired source video, in this case the one that you have just uploaded, and then click **Encode** at the bottom toolbar.
+
+	![Encode Button](Images/encode-button.png?raw=true "Encode Button")
+
+	_Encode Button_
 
 1. In the **Windows Azure Media Encoder** dialog, choose from one of the common or advanced encoding presets. For this task purposes, choose **Playback via HTML5 (IE/Chrome/Safari)**. More information about the presets:
 
@@ -145,13 +138,26 @@ In this task you will upload, encode and publish media content from the portal.
 
 1. In the **Windows Azure Media Encoder** dialog, enter the desired friendly output content name or accept the default. Then click the check button to start the encoding operation and you can track progress from the bottom of the portal.
 
-**Publishing content**
+	![Encoding media in Windows Azure](Images/encoding-media-in-windows-azure.png?raw=true "Encoding media in Windows Azure")
 
-1. Click an asset which is not published, in this case, the video that was just encoded. Then click the **Publish** button to publish to a public URL. Once the content is published to a URL, the URL can be opened by a client player capable of rendering the encoded content.
+	_Encoding media in Windows Azure_
 
-**Playing content from the portal**
- 
-1. Click the published video content and click the **Play** button at the bottom of the portal. Only content that has been published is playable from the portal. Also, the encoding must be supported by your browser.
+<a name="publishing-and-playing-content" />
+### Task 4 - Publishing and Playing content in Media Services ###
+
+In this task, you will publish the already encoded video and play it directly in the Windows Azure Management Portal.
+
+1. Click an asset which is not published, in this case, the video that was just encoded. Then click the **Publish** button at the bottom toolbar to publish the encoded video to a public URL. Once the content is published to a URL, the URL can be opened by a client player capable of rendering the encoded content.
+
+	![Publishing media in Windows Azure](Images/publish-button.png?raw=true "Publishing media in Windows Azure")
+
+	_Publishing media in Windows Azure_
+
+1. Once the publishing process finishes, select the video and click the **Play** button at the bottom toolbar. Only content that has been published is playable from the portal. Also, the encoding must be supported by your browser.
+
+	![Playing media in Windows Azure](Images/playing-media.png?raw=true "Playing media in Windows Azure")
+
+	_Playing media in Windows Azure_
 
 ---
 
@@ -182,6 +188,8 @@ In this exercise, you will create a new console application that allows you to p
 
 1. Paste the following code in the _Program.cs_ file, inside the **Main** method. This code prompts the user about the different steps that the final app will perform, and will aid you in completing the exercise.
 
+	(Code Snippet - _Intro to Media Services - Ex2 - Console Logs_)
+
 	````C#
 	Console.WriteLine("Uploading Video");
             
@@ -204,6 +212,8 @@ In this exercise, you will create a new console application that allows you to p
 	_Programmatically uploading a video_
 
 1. Copy the code snippet shown in the portal and paste it in inside the **Main** method, between the lines that notify about the uploading process. The resulting code will be similar to the following one.
+
+	(Code Snippet - _Intro to Media Services - Ex2 - Upload Video_)
 
 	<!-- mark:5-9 -->
 	````C#
@@ -232,6 +242,24 @@ In this exercise, you will create a new console application that allows you to p
 
 1. Update the code you just pasted to point to the video that you want to upload, by replacing the _YOUR FILE PATH_ string. It could be the same video used in the previous exercise. If you are going to do that it is recommended that you rename the video to differentiate it from the one uploaded in the first exercise of this lab.
 
+1. Go to your Media Service dashboard in the Management Portal and click **Manage Keys** button from the bottom toolbar.
+
+	![Manage Media Service Keys](Images/manage-media-service-keys.png?raw=true)
+
+	_Managing Media Service Keys_
+
+1.	In the dialog box, copy the **Primary Media Service Access Key**.
+
+	![Copying Primary Media Service Key](Images/copying-primary-media-service-key.png?raw=true)
+
+	_Copying Media Service Primary Key_
+
+1.	Replace the key you copied in previous step in the second parameter when instantiating a **CloudMediaContext** class.
+
+	````C#
+	var context = new CloudMediaContext("[YOUR-MEDIA-SERVICE-ACCOUNT-NAME]", "[YOUR-MEDIA-SERVICE-ACCOUNT-KEY]"); 
+	````
+
 <a name="programmatically-encoding-a-mp4-video" />
 ### Task 2 - Programmatically Encoding a Mp4 video using Smooth Streaming ###
 
@@ -242,6 +270,8 @@ In this exercise, you will create a new console application that allows you to p
 	````
 
 1. Add the following code between the WriteLine blocks that notify about the initiation and termination of the encoding operation.
+
+	(Code Snippet - _Intro to Media Services - Ex2 - Encode Video in Smooth Streaming_)
 
 	<!-- mark:3-26 -->
 	````C#
@@ -283,6 +313,8 @@ In this exercise, you will create a new console application that allows you to p
 ### Task 3 - Programmatically Delivering and Streaming a Mp4 video ###
 
 1. Add the following code between the WriteLine blocks that notify about the initiation and termination of the publishing operation.
+
+	(Code Snippet - _Intro to Media Services - Ex2 - Streaming MP4 Video_)
 
 	<!-- mark:3-32 -->
 	````C#
@@ -379,7 +411,7 @@ In this task you will download and install the latest version of the Microsoft M
 <a name="adding-a-video-player-control-to-a-windows8-app" />
 ### Task 2 - Adding a video player control to a Windows 8 app ###
 
-In this task you will create a new C# Store app from scratch and add video control linked to a smooth streaming video uploaded to Windows Azure Media Services.
+In this task you will create a new store app from scratch and add video control linked to a smooth streaming video uploaded to Windows Azure Media Services.
 
 1. Download and install the [Visual Studio Extension SDK for the Smooth Streaming Client] (http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6).
 
@@ -389,49 +421,80 @@ In this task you will create a new C# Store app from scratch and add video contr
 
     _Creating a New Project_
 
-1. In the **New Project** dialog, select **Blank App (XAML)** under the **Visual C# | Windows Store** tab. Name it _SampleMediaPlayer_, choose a location and click **OK**.
+1. In the **New Project** dialog, expand the language tab of your preference (Visual C# or JavaScript), select **Windows Store** and choose the **Blank App** template. Name it _SampleMediaPlayer_, choose a location and click **OK**.
 
-	![New C# Store App](Images/new-store-blank-app.png?raw=true "New C# Store App")
+	![New C# Store App](Images/new-cs-store-blank-app.png?raw=true "New C# Store App")
 
     _New C# Store App_
 
-	
-	![New Store App Solution Explorer](Images/new-store-app-solution-explorer.png?raw=true "New Store App Solution Explorer")
+	![New JavaScript Store App](Images/new-js-store-blank-app.png?raw=true "New JavaScript Store App")
 
-    _New Store App Solution Explorer_
+    _New JavaScript Store App_
 
-1. Add **Microsoft Player Framework Adaptive Streaming Plugin**, **Microsoft Smooth Streaming Client SDK for Windows 8**, and **Microsoft Visual C++ Runtime Package** to your project References. To do this, right-click the project, click **Add Reference**. In the **Reference Manager**, select the aforementioned references that are located under **Windows | Extensions** and click **OK**.
+1. Add **Microsoft Player Framework**, **Microsoft Player Framework Adaptive Streaming Plugin**, **Microsoft Smooth Streaming Client SDK for Windows 8**, and **Microsoft Visual C++ Runtime Package** to your project references. To do this, right-click the project and click **Add Reference**. In the **Reference Manager**, select the aforementioned references that are located under **Windows | Extensions** and click **OK**.
 
-	![Smooth Streaming references](Images/smooth-streaming-references.png?raw=true "Smooth Streaming references")
+	![Smooth Streaming C# References](Images/smooth-streaming-cs-references.png?raw=true "Smooth Streaming C# References")
 
-    _Smooth Streaming references_
+    _Smooth Streaming C# References_
 
-1. Open **MainPage.xaml** to open the markup code for the main page of the app.
+	![Smooth Streaming JavaScript References](Images/smooth-streaming-js-references.png?raw=true "Smooth Streaming JavaScript References")
 
-1. At the top of the file, add the following XML namespace reference.
+    _Smooth Streaming JavaScript References_
 
-	````XML
+1. Open **MainPage.xaml** (for the C# project) or **default.html** (for the JavaScript project) to open the markup code for the main page of the app.
+
+1. Add the following namespace references at the top of the **MainPage.xaml** file (for the C# project) or at the end of the head section in the **default.html** file (for the JavaScript project).
+
+	C#
+
+	````XAML
+	xmlns:PlayerFramework="using:Microsoft.PlayerFramework"
 	xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
 	````
 
-1. Open the toolbox at the left corner of the screen and extend the **Common XAML Controls** section. Drag and drop the **MediaPlayer** control into the designer. Notice the markup code generated in the xaml file for this control.
+	JavaScript
+
+	````HTML
+	<!-- PlayerFramework references -->
+	<link href="/Microsoft.PlayerFramework.Js/css/PlayerFramework-dark.css" rel="stylesheet">
+	<script src="/Microsoft.PlayerFramework.Js/js/PlayerFramework.js"></script>
+
+	<!-- PlayerFramework.Adaptive references -->
+	<script src="/Microsoft.PlayerFramework.Js.Adaptive/js/PlayerFramework.Adaptive.js"></script>
+	````
+
+1. Now you will add a video player control in the **MainPage.xaml** (for the C# project) or in the **default.html** (for the JavaScript project). 
+
+	For C#, open the toolbox at the left corner of the screen and extend the **Common XAML Controls** section. Drag and drop the **MediaPlayer** control into the designer. Notice the markup code generated in the xaml file for this control.
 
 	> **Note:** You may adjust the height and width of the control to values of your choice.
 
-	![Media Player control](Images/media-player-control.png?raw=true "Media Player control")
+	![Media Player control](Images/media-player-control-cs.png?raw=true "Media Player control")
 
-    _Media Player control_
+    _Media Player Control C#_
 
-	![Generated Code for Media Player Control](Images/generated-code-for-media-player-control.png?raw=true "Generated Code for Media Player Control")
+	For JavaScript, replace the content of the body section with the following highlighted code.
+	
+	<!-- mark:2-8 -->
+	````HTML
+	<body>
+		<div data-win-control="PlayerFramework.MediaPlayer" 
+			data-win-options="{                                 
+							  width: 1000,
+							  height: 600,
+							  autoplay: true,
+					  }">
+		</div>
+	</body>
+	````
 
-    _Generated Code for Media Player Control_
+1. In the media player control, add the **Source** property (for the C# version) or the **src** property (for the JavaScript version) as shown in the following code. Replace the _[YOUR-MEDIA-SERVICE-VIDEO-URL]_ placeholder with the URL of the video encoded in smooth streaming at the end of exercise 2.
 
-1. In the MediaPlayer element of the **MainPage.xaml** file, add the **x:Name** property with the value _videoPlayer_, and add the **Source** property, pointing to the URL of the video encoded in smooth streaming at the end of exercise 2.
+	C#
 
-	<!-- mark:2,6 -->
-	````XML
+	<!-- mark:5 -->
+	````XAML
 	<PlayerFramework:MediaPlayer
-		x:Name="videoPlayer"
 		HorizontalAlignment="Left"
 		Height="600" Margin="200,96,0,0"
 		VerticalAlignment="Top" Width="1000"
@@ -439,12 +502,25 @@ In this task you will create a new C# Store app from scratch and add video contr
 	/>
 	````
 
-1. Modify the MediaPlayer control Xaml to add the Adaptive plugin to the plugins collection on the player framework, as shown in the following code.
+	JavaScript
 
-	<!--mark:8-12-->
-	````XML
-	<PlayerFramework:MediaPlayer x:Name="videoPlayer"
-                                HorizontalAlignment="Left"
+	<!-- mark:6 -->
+	````HTML
+	<div data-win-control="PlayerFramework.MediaPlayer" 
+		data-win-options="{                                 
+						  width: 1000,
+						  height: 600,
+						  autoplay: true,
+						  src: '[YOUR-MEDIA-SERVICE-VIDEO-URL]',
+				  }">
+	</div>
+	````
+
+1. In the **MainPage.xaml** file of the C# version, modify the MediaPlayer control Xaml to add the Adaptive plugin to the plugins collection on the player framework, as shown in the following code.
+
+	<!--mark:7-11-->
+	````XAML
+	<PlayerFramework:MediaPlayer HorizontalAlignment="Left"
                                 Height="600"
                                 Margin="200,96,0,0"
                                 VerticalAlignment="Top"
@@ -485,46 +561,80 @@ One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlis
 <a name="adding-advertisements-using-a-vmap-file-to-a-windows8-video-app" />
 ### Task 1 - Adding advertisements using a VMAP file to a Windows 8 video app ###
 
-1. Start **Visual Studio Express 2012 for Windows 8** and open the **Begin** solution located at **Source\Ex4-Advertising\Begin**.
+In this task, you will add advertising support to the media player control of the app using the vmap scheduler plugin.
+
+1. If not already open, start **Visual Studio Express 2012 for Windows 8** and select **Open Project...** from the Start Page. In the **Open Project** dialog, browse to **Ex4-Advertising** in the **Source** folder of the lab, select **Begin\Begin.sln** in the folder for the language of your preference (C# or JavaScript) and click **Open**. Alternatively, you may continue with the solution that you obtained after completing the previous exercise.
 
 1. Add a reference to the _Microsoft Player Framework Advertising Plugin_. To do this, right-click the **References** folder and select **Add Reference**. Under **Windows | Extensions**, check **Microsoft Player Framework Advertising Plugin** and click **OK**.
 
-	![Adding reference to the Advertising Plugin](Images/adding-reference-to-advertising-plugin.png?raw=true "Adding reference to the Advertising Plugin")
+	![Adding reference to the Advertising Plugin C#](Images/adding-reference-to-advertising-plugin-cs.png?raw=true "Adding reference to the Advertising Plugin C#")
 
-    _Adding reference to the Advertising Plugin_
+    _Adding reference to the Advertising Plugin C#_
 
-1. Open **MainPage.xaml** and add the following namespace for the Microsoft Player Framework Advertising Plugin.
+	![Adding reference to the Advertising Plugin JavaScript](Images/adding-reference-to-advertising-plugin-js.png?raw=true "Adding reference to the Advertising Plugin JavaScript")
 
-	````XML
+    _Adding reference to the Advertising Plugin JavaScript_
+
+1. Add the following namespace reference for the _Microsoft Player Framework Advertising Plugin_ at the top of the **MainPage.xaml** file (for the C# project) or at the end of the head section in the **default.html** file (for the JavaScript project).
+
+	C#
+
+	````XAML
 	xmlns:ads="using:Microsoft.PlayerFramework.Advertising"
 	````
 
-1. Change the **Source** property of the **MediaPlayer** control to point to the URL of the video encoded in smooth streaming at the end of exercise 2. The resulting code will be similar to the following.
-	<!-- mark:7 -->
-	````XML
-    <PlayerFramework:MediaPlayer x:Name="videoPlayer"
-                                    HorizontalAlignment="Left"
-                                    Height="600"
-                                    Margin="200,96,0,0"
-                                    VerticalAlignment="Top"
-                                    Width="1000"
-                                    Source="[YOUR-MEDIA-SERVICE-VIDEO-URL]">
+	JavaScript
+
+	````HTML
+	<!-- PlayerFramework Advertising references -->
+	<link href="/Microsoft.PlayerFramework.Js.Advertising/css/PlayerFramework.Advertising.css" rel="stylesheet">
+	<script src="/Microsoft.PlayerFramework.Js.Advertising/js/PlayerFramework.Advertising.js"></script>
+	````
+
+1. In the media player control, change the **Source** property (for the C# version) or the **src** property (for the JavaScript version) to point to the URL of the video encoded in smooth streaming at the end of exercise 2.
+
+	C#
+
+	<!-- mark:6 -->
+	````XAML
+    <PlayerFramework:MediaPlayer HorizontalAlignment="Left"
+								Height="600"
+								Margin="200,96,0,0"
+								VerticalAlignment="Top"
+								Width="1000"
+								Source="[YOUR-MEDIA-SERVICE-VIDEO-URL]">
         <PlayerFramework:MediaPlayer.Plugins>
             <adaptive:AdaptivePlugin />
         </PlayerFramework:MediaPlayer.Plugins>
     </PlayerFramework:MediaPlayer>
 	````
 
-1. Now you will add a new **VmapSchedulerPlugin** plugin to the MediaPlayer that you added in the previous exercise pointing to a _vmap.xml_ file that you will add to the local assets folder of the project in the next task. To do this, replace the _PlayerFramework:MediaPlayer_ element with the following code.
-	<!-- mark:10-11 -->
-	````XML
-	<PlayerFramework:MediaPlayer x:Name="videoPlayer"
-                                    HorizontalAlignment="Left"
-                                    Height="600"
-                                    Margin="200,96,0,0"
-                                    VerticalAlignment="Top"
-                                    Width="1000"
-                                    Source="[YOUR-MEDIA-SERVICE-VIDEO-URL]">
+	JavaScript
+
+	<!-- mark:6 -->
+	````HTML
+	<div data-win-control="PlayerFramework.MediaPlayer" 
+		data-win-options="{                                 
+						  width: 1000,
+						  height: 600,
+						  autoplay: true,
+						  src: '[YOUR-MEDIA-SERVICE-VIDEO-URL]',
+				  }">
+	</div>
+	````
+
+1. Now you will add a new **VmapSchedulerPlugin** plugin to the media player that you added in the previous exercise pointing to a _vmap.xml_ file that you will add to the local assets folder of the project in the next task. To do this, update the media player control with the following code.
+
+	C#
+
+	<!-- mark:9-10 -->
+	````XAML
+	<PlayerFramework:MediaPlayer HorizontalAlignment="Left"
+								Height="600"
+								Margin="200,96,0,0"
+								VerticalAlignment="Top"
+								Width="1000"
+								Source="[YOUR-MEDIA-SERVICE-VIDEO-URL]">
 		<PlayerFramework:MediaPlayer.Plugins>
 			<adaptive:AdaptivePlugin />
 			<ads:VmapSchedulerPlugin Source="ms-appx:///Assets/vmap.xml" />
@@ -533,12 +643,31 @@ One of the scheduling options is the **VMAP** (Digital Video Multiple Ad Playlis
 	</PlayerFramework:MediaPlayer>
 	````
 
+	JavaScript
+
+	<!-- mark:7-9 -->
+	````HTML
+	<div data-win-control="PlayerFramework.MediaPlayer" 
+         data-win-options="{                                 
+                                width: 1000,
+                                height: 600,
+                                autoplay: true,
+                                src: '[YOUR-MEDIA-SERVICE-VIDEO-URL]',
+                                vmapSchedulerPlugin: {
+                                    source: 'ms-appx:///Assets/vmap.xml'
+                                }
+                          }">
+    </div>
+	````
+
 <a name="exploring-vmap-file-and-running-app" />
 ### Task 2 - Exploring the VMAP file and running the app ###
 
 In this task you will add an already pre-configured VMAP file to the local assets folder of the application and explore its main content. Finally, you will run the application to check that the advertisements are displayed at the beginning of the video.
 
 1. In Solution Explorer, right-click the **Assets** folder of the SampleMediaPlayer project and select **Add | Existing Item**. Browse to the **Source/Assets** folder of this lab, select the _vmap.xml_ file and click **Add**.
+
+	> **Note:** For the JavaScript version, you will have to manually create the Assets folder in the project. To do this, right-click the **SampleMediaPlayer** project, select **Add | New Folder** and name it _Assets_.
 
 	![Importing the VMAP file](Images/importing-the-vmap-file.png?raw=true "Importing the VMAP file")
 
@@ -556,7 +685,12 @@ In this task you will add an already pre-configured VMAP file to the local asset
 				  <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
 					 <Ad id="115571748">
 						<InLine>
-						  ...
+						  <AdSystem version="2.0 alpha">Atlas</AdSystem>
+						  <AdTitle>Unknown</AdTitle>
+						  <Description>Unknown</Description>
+						  <Survey></Survey>
+						  <Error></Error>
+						  <Impression id="Atlas"><![CDATA[http://view.atdmt.com/000/sview/115571748/direct;ai.201582527;vt.2/01/634364885739970673]]></Impression>
 						  <Creatives>
 							 <Creative id="video" sequence="0" AdID="">
 								<Linear>
@@ -566,13 +700,13 @@ In this task you will add an already pre-configured VMAP file to the local asset
 										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
 									 </MediaFile>
 									 <MediaFile apiFramework="Windows Media" id="windows_progressive_300" maintainAspectRatio="true" scaleable="true"  delivery="progressive" bitrate="300" width="400" height="300" type="video/x-ms-wmv">
-										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
+										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_2_000_300_4x3.wmv]]>
 									 </MediaFile>
 									 <MediaFile apiFramework="Windows Media" id="windows_progressive_500" maintainAspectRatio="true" scaleable="true"  delivery="progressive" bitrate="500" width="400" height="300" type="video/x-ms-wmv">
-										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
+										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_500_4x3.wmv]]>
 									 </MediaFile>
 									 <MediaFile apiFramework="Windows Media" id="windows_progressive_700" maintainAspectRatio="true" scaleable="true" delivery="progressive" bitrate="700" width="400" height="300" type="video/x-ms-wmv">
-										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
+										<![CDATA[http://dpeshare.blob.core.windows.net/mediaserviceslabassets/XBOX_HD_DEMO_700_2_000_700_4x3.wmv]]>
 									 </MediaFile>
 								  </MediaFiles>
 								</Linear>
@@ -583,9 +717,11 @@ In this task you will add an already pre-configured VMAP file to the local asset
 				  </VAST>
 				</vmap:VASTData>
 			</vmap:AdSource>
-		<vmap:TrackingEvents>
-		...
-		</vmap:TrackingEvents>
+			<vmap:TrackingEvents>
+				<vmap:Tracking event="breakStart">
+				  http://MyServer.com/breakstart.gif
+				</vmap:Tracking>
+			</vmap:TrackingEvents>
 		</vmap:AdBreak>
 	</vmap:VMAP>
 	````
